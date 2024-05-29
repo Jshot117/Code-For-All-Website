@@ -1,7 +1,5 @@
 function Hero() {
-    function handleClick() {
-        window.open('https://discord.gg/s8jwd4Es')
-    }
+
     return (
         <div>
             <section className=" bg-gray-50 mt-20 mb-10  shadow-xl md:container md:mx-auto text-center  ">
@@ -14,7 +12,7 @@ function Hero() {
                     more words and more powerful statment and lots of pursuasiojn
                     yesssss surrrr you want to join this club text-4xl md:text-6xl font-bold mb-
                 </p>
-                <button onClick={handleClick} className="bg-gray-50 text-blue-600 font-semibold hover:underline" >Get Started</button>
+                <button className="bg-gray-50 text-blue-600 font-semibold hover:underline" ><a href = 'https://discord.gg/s8jwd4Es'>Get Started</a></button>
             </section>
         </div>
     )
