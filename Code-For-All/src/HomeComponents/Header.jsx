@@ -1,6 +1,6 @@
 function Header() {
     return (
-        <header className="bg-gray-600 text-white p-4">
+        <header className ="bg-red-400 text-white p-4">
             <div className="container mx-auto flex items-center">
                 <h1 className="text-2xl font-bold">Code For All</h1>
                 <nav className="ml-auto">
