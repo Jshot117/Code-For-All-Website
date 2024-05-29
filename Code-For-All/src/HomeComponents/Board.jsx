@@ -6,7 +6,10 @@ import thomas from '../assets/thomas.jpeg';
 
 function Board(){
     return(
-        <div className = "mt-36">
+        <div className = "mt-36 text-center">
+            <h1 className="hover:scale-105 ease-in-out duration-300 p-0 
+                            bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 
+                            text-6xl md:text-7xl font-bold mb-4 font-mono">Our Board</h1>
             <Carousel
                 additionalTransfrom={0}
                 arrows
@@ -55,7 +58,7 @@ function Board(){
                 rewindWithAnimation={false}
                 rtl={false}
                 shouldResetAutoplay
-                showDots={false}
+                showDots={true}
                 sliderClass=""
                 slidesToSlide={1}
                 swipeable
