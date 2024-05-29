@@ -3,6 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import BoardCard from './BoardCard';
 import justin from '../assets/justin.jpg';
 import thomas from '../assets/thomas.jpeg';
+import Jonnathan from '../assets/Jonnathan.jpg'
 
 function Board(){
     return(
@@ -64,7 +65,7 @@ function Board(){
                 swipeable
             >
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+                <BoardCard image={Jonnathan} name="Jonnathan Saavedra" role = "Event Manager" description="I love to watch Justin collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
