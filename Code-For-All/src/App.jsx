@@ -13,8 +13,8 @@ function App() {
     <>
       <Header />
       <Hero />
-      <LatestEvent />
-      
+      <LatestEvent /> 
+      <Social />
     </>
   )
 }
