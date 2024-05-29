@@ -9,7 +9,9 @@ function Header() {
                     <ul className="flex space-x-4">
                         <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">Home</li>
                         <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">About</li>
-                        <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">More Events</li>
+                        <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">Board</li>
+                        <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">Events</li>
+                        <li className="p-2 hover:scale-105 ease-in-out duration-300 hover:underline cursor-pointer text-xl">Contact</li>
                     </ul>
                 </nav>
             </div>
