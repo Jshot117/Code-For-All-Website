@@ -12,8 +12,10 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-lottie": "^1.2.4",
     "react-multi-carousel": "^2.8.5"
   },
   "devDependencies": {

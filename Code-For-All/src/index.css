@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+header {
+   
+
+}
+.glow { 
+    box-shadow: 0 0 10px rgba(133, 13, 245, 0.8); /* Glow effect for box without hover (stays glowing all the timne) */
+}
+.textglow{ 
+    text-shadow: 0 0 10px rgba(137, 11, 255, 0.8); /*Text Glow (Stays glowing all the time) */ 
+}
+.hover\:glow:hover {
+    box-shadow: 0 0 10px rgba(133, 13, 245, 0.8); /* Glow effect  when hover*/
+}
+
+
+.nav-item:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+    transition: transform 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+}

@@ -9,11 +9,13 @@ import BoardCard from './HomeComponents/BoardCard'
 import Social from './HomeComponents/Social'
 import LatestEvent from './HomeComponents/LatestEvent'
 import image from './assets/justin.jpg'
+import LottieAnimation from './HomeComponents/LottieAnimation' // Lottie component
 
 function App() {
 
   return (
     <>
+      <div className=""><LottieAnimation/></div>
       <Header />
       <Hero />
       <BoardCard image={image} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
