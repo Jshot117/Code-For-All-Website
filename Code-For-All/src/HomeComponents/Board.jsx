@@ -4,6 +4,7 @@ import BoardCard from './BoardCard';
 import justin from '../assets/justin.jpg';
 import thomas from '../assets/thomas.jpeg';
 import Jonnathan from '../assets/Jonnathan.jpg'
+import Romel from '../assets/Romel.jpg'
 
 function Board(){
     return(
@@ -67,7 +68,7 @@ function Board(){
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
                 <BoardCard image={Jonnathan} name="Jonnathan Saavedra" role = "Event Manager" description="I love to watch Justin collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+                <BoardCard image={Romel} name="Vishal Romel Charran" role = "Workshop Developer" description="What No Internships Look Like!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>

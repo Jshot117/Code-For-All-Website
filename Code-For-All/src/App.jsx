@@ -18,7 +18,7 @@ function App() {
       <div className=""><LottieAnimation/></div>
       <Header />
       <Hero className="mb-20"/>
-      <Board/>
+      <Board className=""/>
       <LatestEvent /> 
       <Social />
     </>
