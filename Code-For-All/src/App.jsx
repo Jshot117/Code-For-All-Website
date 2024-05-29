@@ -17,8 +17,8 @@ function App() {
     <>
       <div className=""><LottieAnimation/></div>
       <Header />
-      <Hero />
-      <BoardCard image={image} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+      <Hero className="mb-20"/>
+      <Board/>
       <LatestEvent /> 
       <Social />
     </>

@@ -24,7 +24,7 @@ function Hero() {
                 <h1 className="hover:scale-105 ease-in-out duration-300 p-0 
                             bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400 
                             text-6xl md:text-7xl font-bold mb-4 font-mono">
-                    Welcome to CodeForAll
+                    Welcome to Code For All
                 </h1>
                 <p className="text-2xl md:text-xl mb-8 mt-5 text-center font-mono" >
                 <span className="text-red-500">Empowering</span>{" "}
