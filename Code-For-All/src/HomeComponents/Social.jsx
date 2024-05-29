@@ -22,7 +22,7 @@ const Social = () => {
             </div>
             <div className="flex items-center p-4">
                 <h1 className="font-bold text-xl " >Contact Us:</h1>
-                <p className="pl-2 ">emailcodeforall@gmail.com</p>
+                <p className="pl-2 ">codeforallqc@gmail.com</p>
             </div>
         </div>
     );
