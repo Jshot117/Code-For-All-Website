@@ -2,7 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BoardCard from './BoardCard';
 import justin from '../assets/justin.jpg';
-import thomas from '../assests/thomas.jpeg';
+import thomas from '../assets/thomas.jpeg';
 
 function Board(){
     return(
