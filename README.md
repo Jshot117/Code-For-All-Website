@@ -59,5 +59,6 @@ Here is a list of all the dependencies required for this project:
 - `@fortawesome/react-fontawesome`
 - `@fortawesome/free-brands-svg-icons`
 - `react-multi-carousel`
+- 'npm i --save @fortawesome/fontawesome-svg-core'
 
 ---
