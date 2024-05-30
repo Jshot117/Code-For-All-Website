@@ -19,12 +19,17 @@ import Shaine from '../assets/shaine.jpeg'
 import Dennis from '../assets/dennis.jpeg'
 import Oliver from '../assets/oliver.jpg'
 import Athor from '../assets/athor.png'
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 
 const Board = forwardRef((props, ref) => {
-    return(
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
-        <section id="second-section" className=" bg-gradient-to-b from-white to-zinc-700">
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 480);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+    return(
 
         <div className = "mt-36 text-center" ref={ref}>
             <h1 className="p-0 
@@ -34,14 +39,14 @@ const Board = forwardRef((props, ref) => {
                 additionalTransfrom={0}
                 arrows
                 autoPlaySpeed={3000}
-                centerMode={false}
+                centerMode={!isMobile}
                 className=""
                 containerClass="container-with-dots"
                 dotListClass=""
                 draggable
                 focusOnSelect={false}
                 infinite
-                itemClass=""
+                itemClass="flex justify-center"
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -50,28 +55,44 @@ const Board = forwardRef((props, ref) => {
                 renderDotsOutside={false}
                 responsive={{
                     desktop: {
-                    breakpoint: {
-                        max: 3000,
-                        min: 1024
+                        breakpoint: {
+                            max: 3000,
+                            min: 1500
+                        },
+                        items: 4,
+                        partialVisibilityGutter: 40
                     },
-                    items: 5,
-                    partialVisibilityGutter: 40
+                    smallDesktop: {
+                        breakpoint: {
+                            max: 1500,
+                            min: 1024
+                        },
+                        items: 3,
+                        partialVisibilityGutter: 30
                     },
                     mobile: {
-                    breakpoint: {
-                        max: 464,
-                        min: 0
-                    },
-                    items: 1,
-                    partialVisibilityGutter: 30
+                        breakpoint: {
+                            max: 480,
+                            min: 0
+                        },
+                        items: 1,
+                        partialVisibilityGutter: 30
+                        },
+                    largeMobile: {
+                        breakpoint: {
+                            max: 768,
+                            min: 480
+                        },
+                        items: 1,
+                        partialVisibilityGutter: 30
                     },
                     tablet: {
-                    breakpoint: {
-                        max: 1024,
-                        min: 464
-                    },
-                    items: 2,
-                    partialVisibilityGutter: 30
+                        breakpoint: {
+                            max: 1024,
+                            min: 768
+                        },
+                        items: 2,
+                        partialVisibilityGutter: 30
                     }
                 }}
                 rewind={false}
@@ -104,7 +125,6 @@ const Board = forwardRef((props, ref) => {
             </Carousel>
         </div>
         
-        </section>
     )
 })
 
