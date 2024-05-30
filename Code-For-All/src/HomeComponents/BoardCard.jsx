@@ -1,7 +1,6 @@
 function BoardCard({ image, name, role, description, link }) {
     return (
-
-        <div className="flex-col max-w-82 p-5 m-10 rounded-xl shadow-lg shadow-black   bg-zinc-900 hover:scale-110 ease-in-out duration-300">
+        <div className="flex-col min-w-56 max-w-72 p-5 m-10 rounded-xl shadow-lg shadow-black   bg-zinc-900 hover:scale-110 ease-in-out duration-300">
             <div className="group hover:shadow-lg transition-shadow duration-300">
                 <a href={link}>
                     <div className="image-container h-60 w-full flex items-center justify-center"> {/* Set fixed dimensions for the image container */}
@@ -21,9 +20,6 @@ function BoardCard({ image, name, role, description, link }) {
                 </div>
             </div>
         </div>
-
-    
-
     );
 }
 
