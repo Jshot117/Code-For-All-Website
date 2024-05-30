@@ -25,7 +25,7 @@ function App() {
         <LottieAnimation />
       </div>
       <Header sections = {sections} />
-      <Hero className="mb-20" ref={homeSection}/>
+      <Hero className="mb-20" ref={{homeSection, aboutSection}}/>
       <Board className="" ref={boardSection} />
       <PastEvent ref={eventSection}/>
       <Social ref={contactSection} />

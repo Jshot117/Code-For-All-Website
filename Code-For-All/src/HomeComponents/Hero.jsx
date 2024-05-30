@@ -18,7 +18,7 @@ const Hero = forwardRef((props, ref) => {
     };
 
     return (
-        <div className="relative flex items-center" ref = {ref}>
+        <div className="relative flex items-center" ref = {ref.homeSection}>
             <section className="opacity-100 mt-0 mb-0  md:container md:mx-auto text-center rounded-lg p-8" style={{ backdropFilter: 'blur(2px)' }}>
                 <Lottie options={defaultOptions} height={300} width={300} className="mx-auto mb-0" />
                 <h1 className="hover:scale-105 ease-in-out duration-300 p-0 
@@ -32,7 +32,7 @@ const Hero = forwardRef((props, ref) => {
                 <span className="text-blue-500">Building</span>{" "}
                 <span className="text-orange-300">Futures</span>
                 </p>
-                <p className="text-lg md:text-xl mb-8 text-center font-mono opacity-100 ">
+                <p className="text-lg md:text-xl mb-8 text-center font-mono opacity-100 " ref = {ref.aboutSection}>
 
 
                 {/* --Text with different colors, I didnt like the look but you can try it - Romel     */}

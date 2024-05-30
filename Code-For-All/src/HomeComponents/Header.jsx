@@ -33,7 +33,7 @@ function Header({sections}) {
                         <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[0])}>
                             Home
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[0])}>
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[1])}>
                             About
                         </li>
                         <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[2])}>
