@@ -46,8 +46,11 @@ const Hero = forwardRef((props, ref) => {
                 <span className="text-red-500">started,</span>{" "} 
                 <span className="text-orange-300">there's a place for you here.</span>{" "}   */}
                 
-                <span className="text-purple-500 textglow">Join a community dedicated to inclusive, learning, collaboration, and innovation. 
-                Whether you're a seasoned developer or just getting started, there's a place for you here.</span>{" "} 
+                <span className="text-purple-500 textglow">The mission of Code for All is to empower students
+                 of all backgrounds to excel in their problem-solving and coding classes. We strive to create 
+                 a supportive and inclusive learning environment where everyone can deepen their understanding of 
+                 code and develop the skills necessary to tackle complex challenges. Together, we will help each other 
+                 achieve our full potential as coders and problem-solvers!</span>{" "} 
 
                                                                    </p>
                 <button onClick={handleClick} className="p-3 px-8 border border-purple-500 rounded-full text-xl hover:scale-105 ease-in-out duration-300 text-purple-500 hover:bg-purple-500 hover:text-white  font-semibold font-mono hover:glow">Get Started</button>

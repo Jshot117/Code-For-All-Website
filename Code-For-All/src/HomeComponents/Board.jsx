@@ -109,7 +109,7 @@ const Board = forwardRef((props, ref) => {
                 <BoardCard image={Eric} name="Eric Salazar" role = "Treasurer" description="I have an orange cat named bibi" link = "https://www.linkedin.com/in/eric-salazar04/"/>
                 <BoardCard image={Amart} name="Andrew Martin" role = "Secretary & Advisor" description="I used to study theatre" link = "https://www.linkedin.com/in/andrew-martin72/"/>
                 <BoardCard image={Jonnathan} name="Jonnathan Saavedra" role = "Event Manager" description="I love to watch Justin collect figures!" link="https://www.linkedin.com/in/jonnathan-saavedra/"/>
-                <BoardCard image={Sophia} name="Sophia Yau" role = "Event Manager & Tutor" description="Blank for now" link="https://www.linkedin.com/in/sophiayau/"/>
+                <BoardCard image={Sophia} name="Sophia Yau" role = "Event Manager & Tutor" description="I love cats" link="https://www.linkedin.com/in/sophiayau/"/>
                 <BoardCard image={Mike} name="Ye Htut Maung" role = "Workshop Developer" description="I like Japanese BBQ" link="https://www.linkedin.com/in/ye-htut-maung/"/>
                 <BoardCard image={Romel} name="Vishal Romel Charran" role = "Workshop Developer" description="What No Internships Look Like!" link="https://www.linkedin.com/in/vishal-charran-36b1221bb/"/>
                 <BoardCard image={Daniel} name="Daniel Jackson" role = "Workshop Developer" description="Like to travel, Gym, skateboard" link="https://www.linkedin.com/in/danieljac/"/>
