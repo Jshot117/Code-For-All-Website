@@ -33,6 +33,9 @@ Follow these steps to set up the project and run it locally.
    npm install @fortawesome/react-fontawesome
    npm install @fortawesome/free-brands-svg-icons
    npm install react-multi-carousel --save
+   npm install @fortawesome/fontawesome-svg-core
+   npm install @fortawesome/free-solid-svg-icons
+   npm install @fortawesome/react-fontawesome
    ```
 
 ### Running the Development Server
@@ -58,6 +61,8 @@ Here is a list of all the dependencies required for this project:
 - `react-lottie`
 - `@fortawesome/react-fontawesome`
 - `@fortawesome/free-brands-svg-icons`
+-  @fortawesome/free-solid-svg-icons
+-  @fortawesome/fontawesome-svg-core
 - `react-multi-carousel`
 
 ---
