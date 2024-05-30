@@ -19,9 +19,18 @@ import Shaine from '../assets/shaine.jpeg'
 import Dennis from '../assets/dennis.jpeg'
 import Oliver from '../assets/oliver.jpg'
 import Athor from '../assets/athor.png'
+import { useEffect, useState } from 'react';
 
 
 function Board(){
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 480);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
     return(
         <div className = "mt-36 text-center">
             <h1 className="p-0 
@@ -31,14 +40,14 @@ function Board(){
                 additionalTransfrom={0}
                 arrows
                 autoPlaySpeed={3000}
-                centerMode={false}
+                centerMode={!isMobile}
                 className=""
                 containerClass="container-with-dots"
                 dotListClass=""
                 draggable
                 focusOnSelect={false}
                 infinite
-                itemClass=""
+                itemClass="flex justify-center"
                 keyBoardControl
                 minimumTouchDrag={80}
                 pauseOnHover
@@ -47,28 +56,36 @@ function Board(){
                 renderDotsOutside={false}
                 responsive={{
                     desktop: {
-                    breakpoint: {
-                        max: 3000,
-                        min: 1024
-                    },
-                    items: 5,
-                    partialVisibilityGutter: 40
+                        breakpoint: {
+                            max: 3000,
+                            min: 1024
+                        },
+                        items: 3,
+                        partialVisibilityGutter: 40
                     },
                     mobile: {
-                    breakpoint: {
-                        max: 464,
-                        min: 0
-                    },
-                    items: 1,
-                    partialVisibilityGutter: 30
+                        breakpoint: {
+                            max: 480,
+                            min: 0
+                        },
+                        items: 1,
+                        partialVisibilityGutter: 30
+                        },
+                    largeMobile: {
+                        breakpoint: {
+                            max: 768,
+                            min: 480
+                        },
+                        items: 1,
+                        partialVisibilityGutter: 30
                     },
                     tablet: {
-                    breakpoint: {
-                        max: 1024,
-                        min: 464
-                    },
-                    items: 2,
-                    partialVisibilityGutter: 30
+                        breakpoint: {
+                            max: 1024,
+                            min: 768
+                        },
+                        items: 2,
+                        partialVisibilityGutter: 30
                     }
                 }}
                 rewind={false}
