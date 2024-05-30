@@ -23,6 +23,9 @@ import Athor from '../assets/athor.png'
 
 function Board(){
     return(
+
+        <section id="second-section" className=" bg-gradient-to-b from-white to-zinc-700">
+
         <div className = "mt-36 text-center">
             <h1 className="p-0 
                             bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 
@@ -101,6 +104,7 @@ function Board(){
             </Carousel>
         </div>
         
+        </section>
     )
 }
 

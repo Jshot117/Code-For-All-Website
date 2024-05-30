@@ -9,6 +9,7 @@ import BoardCard from './HomeComponents/BoardCard'
 import Social from './HomeComponents/Social'
 import Projects from './HomeComponents/Projects'
 import LatestEvent from './HomeComponents/LatestEvent'
+import LatestEvent2 from './HomeComponents/LatestEvent2'
 import image from './assets/justin.jpg'
 import LottieAnimation from './HomeComponents/LottieAnimation' // Lottie component
 
@@ -20,7 +21,9 @@ function App() {
       <Header />
       <Hero className="mb-20"/>
       <Board className=""/>
+      <LatestEvent2 /> 
       <LatestEvent /> 
+    
       <Projects/>
       <Social />
     </>

@@ -1,5 +1,6 @@
 function BoardCard({ image, name, role, description, link }) {
     return (
+
         <div className="flex-col max-w-82 p-5 m-10 rounded-xl shadow-lg shadow-black   bg-zinc-900 hover:scale-110 ease-in-out duration-300">
             <div className="group hover:shadow-lg transition-shadow duration-300">
                 <a href={link}>
@@ -20,6 +21,9 @@ function BoardCard({ image, name, role, description, link }) {
                 </div>
             </div>
         </div>
+
+    
+
     );
 }
 
