@@ -2,9 +2,19 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BoardCard from './BoardCard';
 import justin from '../assets/justin.jpg';
-import thomas from '../assets/thomas.jpeg';
+import Thomas from '../assets/thomas.jpeg';
 import Jonnathan from '../assets/Jonnathan.jpg'
 import Romel from '../assets/Romel.jpg'
+import Mike from '../assets/mike.jpeg'
+import Eric from '../assets/eric_img.jpeg'
+import Amart from '../assets/amart.jpg'
+import Sophia from '../assets/sophia.png'
+import Daniel from '../assets/daniel.jpg'
+import Rakib from '../assets/rakib.jpg'
+import Yonghao from '../assets/yonghao.png'
+import Patryk from '../assets/patryk.jpg'
+import Feng from '../assets/feng.jpeg'
+
 
 function Board(){
     return(
@@ -66,12 +76,19 @@ function Board(){
                 swipeable
             >
                 <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+                <BoardCard image={Thomas} name="Thomas Soupionis" role = "Vice-President" description="I like buying sneakers"/>
+                <BoardCard image={Eric} name="Eric Salazar" role = "Treasurer" description="I have an orange cat named bibi"/>
+                <BoardCard image={Amart} name="Andrew Martin" role = "Secretary & Advisor" description="I used to study theatre"/>
                 <BoardCard image={Jonnathan} name="Jonnathan Saavedra" role = "Event Manager" description="I love to watch Justin collect figures!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+                <BoardCard image={Sophia} name="Sophia Yau" role = "Event Manager & Tutor" description="Blank for now"/>
+                <BoardCard image={Mike} name="Ye Htut Maung" role = "Workshop Developer" description="I like Japanese BBQ"/>
                 <BoardCard image={Romel} name="Vishal Romel Charran" role = "Workshop Developer" description="What No Internships Look Like!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
-                <BoardCard image={justin} name="Justin Espinal" role = "President & Founder" description="I love to collect figures!"/>
+                <BoardCard image={Daniel} name="Daniel Jackson" role = "Workshop Developer" description="Like to travel, Gym, skateboard"/>
+                <BoardCard image={Rakib} name="Rakib Shahid" role = "Workshop Developer & Tutor" description="I like playing guitar and watching F1"/>
+                <BoardCard image={Yonghao} name="Yonghao Lin" role = "Tutor" description="I like cats, crocheting, video games (Minecraft), and the gym"/>
+                <BoardCard image={Patryk} name="Patryk Stypulkowski" role = "Tutor" description="I hate front end!"/>
+                <BoardCard image={Feng} name="Fengsheng Chen" role = "Tutor" description="Souls game enjoyer"/>
+                <BoardCard image={Patryk} name="Shaine Lomenario" role = "Marketing" description="I hate front end!"/>
 
             </Carousel>
         </div>
