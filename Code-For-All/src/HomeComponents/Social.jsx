@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-
-const Social = () => {
+import { forwardRef } from 'react';
+const Social = forwardRef((props, ref) => {
     return (
-        <div className = "mx-auto border-t bg-gray-100">
+        <div className = "mx-auto border-t bg-gray-100" ref = {ref}>
             <div className="container mx-auto flex-row items-center">
                 <div className="flex  items-center justify-between p-4">
                     <div className="flex  items-center mr-20 ">
@@ -28,6 +28,6 @@ const Social = () => {
             </div>
         </div>
     );
-};
+})
 
 export default Social;

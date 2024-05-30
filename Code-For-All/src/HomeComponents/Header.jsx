@@ -4,7 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+const scrollToSection = (elementRef) => {
+    window.scrollTo({
+        top: elementRef.current.offsetTop,
+        behavior: "smooth"
+    });
+};
+
+function Header({sections}) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -23,19 +30,19 @@ function Header() {
                             <FontAwesomeIcon icon={faXmark} className={` ${isOpen ? 'block' : 'hidden'}`} />
                         </button>
 
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow">
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[0])}>
                             Home
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow">
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[0])}>
                             About
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow">
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[2])}>
                             Board
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow">
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[3])}>
                             Events
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow">
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[4])}>
                             Contact
                         </li>
                     </ul>

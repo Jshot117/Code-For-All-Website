@@ -19,14 +19,14 @@ import Shaine from '../assets/shaine.jpeg'
 import Dennis from '../assets/dennis.jpeg'
 import Oliver from '../assets/oliver.jpg'
 import Athor from '../assets/athor.png'
+import { forwardRef } from 'react';
 
-
-function Board(){
+const Board = forwardRef((props, ref) => {
     return(
 
         <section id="second-section" className=" bg-gradient-to-b from-white to-zinc-700">
 
-        <div className = "mt-36 text-center">
+        <div className = "mt-36 text-center" ref={ref}>
             <h1 className="p-0 
                             bg-clip-text text-transparent bg-gradient-to-r from-black to-purple-400 
                             text-6xl md:text-7xl font-bold mb-4 font-mono">Our Board</h1>
@@ -106,6 +106,6 @@ function Board(){
         
         </section>
     )
-}
+})
 
 export default Board;

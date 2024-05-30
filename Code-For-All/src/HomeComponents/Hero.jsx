@@ -1,8 +1,8 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../assets/PurpleComputer.json'; // Replace '../assets/PurpleComputer.json' with the path to your animation JSON file
-
-function Hero() {
+import { forwardRef } from 'react';
+const Hero = forwardRef((props, ref) => {
     function handleClick() {
         window.open('https://discord.gg/s8jwd4Es');
     }
@@ -18,7 +18,7 @@ function Hero() {
     };
 
     return (
-        <div className="relative flex items-center">
+        <div className="relative flex items-center" ref = {ref}>
             <section className="opacity-100 mt-0 mb-0  md:container md:mx-auto text-center rounded-lg p-8" style={{ backdropFilter: 'blur(2px)' }}>
                 <Lottie options={defaultOptions} height={300} width={300} className="mx-auto mb-0" />
                 <h1 className="hover:scale-105 ease-in-out duration-300 p-0 
@@ -54,6 +54,6 @@ function Hero() {
             </section>
         </div>
     );
-}
+})
 
 export default Hero;
