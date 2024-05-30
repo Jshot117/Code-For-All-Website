@@ -143,13 +143,13 @@ export const BOARDINFO = [
         name: "Andrew Thoral",
         role: "Marketing", 
         description: "I love jolibee",
-        link: ""
+        link: "https://www.linkedin.com/company/code-for-all-qc"
     },
     {
         image: Oliver, 
         name: "Oliver", 
         role: "Mascot",
         description: "Meow",
-        link: ""
+        link: "https://www.linkedin.com/company/code-for-all-qc"
     },
 ];

@@ -6,7 +6,6 @@ function BoardCard({ image, name, role, description, link }) {
                     <div className="image-container h-60 w-full flex items-center justify-center"> {/* Set fixed dimensions for the image container */}
                         <img
                             src={image}
-                            href={link}
                             alt={name}
                             className="rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300 max-h-full max-w-full object-cover" // Set max-height and max-width to maintain aspect ratio
                         />

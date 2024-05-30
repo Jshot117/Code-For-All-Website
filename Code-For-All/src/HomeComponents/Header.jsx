@@ -20,7 +20,7 @@ function Header({sections}) {
     return (
         <header className="text-purple-500 p-4 rounded-lg font-mono">
             <div className="container mx-auto flex items-center">
-                <img src={logo} alt="Code for All logo" className="max-w-20 hover:scale-105 ease-in-out duration-300"></img>
+                <a href="https://www.linkedin.com/company/code-for-all-qc"><img src={logo} href="https://www.linkedin.com/company/code-for-all-qc" alt="Code for All logo" className="max-w-20 hover:scale-105 ease-in-out duration-300 cursor-pointer"></img></a>
                 <button onClick={toggleMenu} className={`z-20 text-purple-500 focus:outline-none md:hidden ml-auto }`}>
                     <FontAwesomeIcon icon={faBars} className={`w-6 h-6 ${isOpen ? 'hidden' : 'block'}`} />
                 </button>
