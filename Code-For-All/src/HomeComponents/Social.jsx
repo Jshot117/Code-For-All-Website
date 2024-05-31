@@ -2,9 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { forwardRef } from 'react';
+import NewsLetter from './NewsLetter';
 const Social = forwardRef((props, ref) => {
     return (
-        <div className = "mx-auto border-t bg-gray-100" ref = {ref}>
+        <div className = "flex flex-col items-center pb-10 mt-40 md:flex md:flex-row border-t bg-gray-100" ref = {ref}>
             <div className="container mx-auto flex-row items-center">
                 <div className="flex  items-center justify-between p-4">
                     <div className="flex  items-center mr-20 ">
@@ -21,11 +22,14 @@ const Social = forwardRef((props, ref) => {
                         </a>
                     </div>
                 </div>
+                
                 <div className="flex items-center p-4">
                     <h1 className="font-bold text-xl " >Contact Us:</h1>
                     <p className="pl-2 ">codeforallqc@gmail.com</p>
                 </div>
+                
             </div>
+            <NewsLetter />
         </div>
     );
 })
