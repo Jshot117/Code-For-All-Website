@@ -9,7 +9,6 @@ import Sophia from './assets/sophia.png'
 import Daniel from './assets/daniel.jpg'
 import Rakib from './assets/rakib.jpg'
 import Yonghao from './assets/yonghao.png'
-import Patryk from './assets/patryk.jpg'
 import Lauren from './assets/lauren.jpg'
 import Feng from './assets/feng.jpeg'
 import Shaine from './assets/shaine.jpeg'
@@ -95,13 +94,6 @@ export const BOARDINFO = [
         role: "Tutor",
         description: "I like cats, crocheting, video games (Minecraft), and the gym", 
         link: "https://www.linkedin.com/in/yonghao-lin-b6027b242/"
-    },
-    {
-        image: Patryk, 
-        name: "Patryk Stypulkowski", 
-        role: "Tutor", 
-        description: "I hate front end!", 
-        link: "https://www.linkedin.com/in/pstypulk/"
     },
     {
         image: Feng, 
