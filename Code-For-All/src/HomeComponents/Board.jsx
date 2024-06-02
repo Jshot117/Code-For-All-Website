@@ -14,6 +14,7 @@ const Board = forwardRef((props, ref) => {
         return () => window.removeEventListener('resize', handleResize);
       }, []);
     return(
+      <section id="second-section" className=" bg-gradient-to-b from-white to-custom-dark-blue pb-20 ">
 
         <div className = "mt-36 text-center" ref={ref}>
             <h1 className="p-0 
@@ -143,6 +144,8 @@ const Board = forwardRef((props, ref) => {
                 ))}
             </Carousel>
         </div>
+        
+        </section>
         
     )
 })

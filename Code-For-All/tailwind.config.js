@@ -8,7 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-dark-blue': '#11162f',
+        'custom-dark-blue': 'rgba(53,35,103,255)'
+
+        ,
       },
     },
   },
