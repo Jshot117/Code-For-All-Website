@@ -2,68 +2,39 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import PastEventCard from "./PastEventCard";
 import { PASTEVENTSINFO } from "../PastEventsInfo";
-import { forwardRef } from "react";
-
-const PastEvent = forwardRef((props, ref) => {
+import Lottie from "react-lottie";
+import Meet_a_scientist_event3 from "../assets/Meet_a_scientist_event3.jpg";
+import animationData from "../assets/PurpleSpacev2.json";
+import React from "react";
+import { INCOMINGEVENTSINFO } from "../IncomingEventsInfo";
+import IncomingEvent from "./IncomingEvent";
+function PastEvent() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
-    <div ref={ref}>
-      <Carousel
-        additionalTransfrom={0}
-        arrows
-        autoPlaySpeed={3000}
-        centerMode={false}
-        className=""
-        containerClass="container-with-dots"
-        dotListClass=""
-        draggable
-        focusOnSelect={false}
-        infinite
-        itemClass=""
-        keyBoardControl
-        minimumTouchDrag={80}
-        pauseOnHover
-        renderArrowsWhenDisabled={false}
-        renderButtonGroupOutside={false}
-        renderDotsOutside={false}
-        responsive={{
-          desktop: {
-            breakpoint: {
-              max: 3000,
-              min: 1024,
-            },
-            items: 5,
-            partialVisibilityGutter: 40,
-          },
-          mobile: {
-            breakpoint: {
-              max: 464,
-              min: 0,
-            },
-            items: 1,
-            partialVisibilityGutter: 30,
-          },
-          tablet: {
-            breakpoint: {
-              max: 1024,
-              min: 464,
-            },
-            items: 2,
-            partialVisibilityGutter: 30,
-          },
-        }}
-        rewind={false}
-        rewindWithAnimation={false}
-        rtl={false}
-        shouldResetAutoplay
-        showDots={true}
-        sliderClass=""
-        slidesToSlide={1}
-        swipeable
-      >
-        {/* {PASTEVENTSINFO.map((paseveinfo) => (
-          <PastEventCard key={paseveinfo.title} {...paseveinfo} />
-        ))}*/}
-
+    <section
+      id="second-section"
+      className="relative p-20 bg-transparent overflow-hidden"
+    >
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {" "}
+        {/* Add pointer-events-none class */}
+        <Lottie options={defaultOptions} height="93%" width="100%" />
+      </div>
+      <div className="relative justify-center">
+        <IncomingEvent
+          title={INCOMINGEVENTSINFO[0].title}
+          description={INCOMINGEVENTSINFO[0].description}
+          images={INCOMINGEVENTSINFO[0].image}
+        ></IncomingEvent>
+      </div>
+      <div className="relative z-10 flex flex-wrap justify-center">
         {PASTEVENTSINFO.map((event, index) => (
           <PastEventCard
             key={index}
@@ -72,9 +43,9 @@ const PastEvent = forwardRef((props, ref) => {
             images={event.image}
           />
         ))}
-      </Carousel>
-    </div>
+      </div>
+    </section>
   );
-})
+}
 
 export default PastEvent;

@@ -1,6 +1,9 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Lottie from "react-lottie";
+import Meet_a_scientist_event3 from "../assets/Meet_a_scientist_event3.jpg";
+import animationData from "../assets/PurpleSpacev2.json";
 
 function PastEventCard({ title, description, images }) {
   const responsive = {
@@ -18,37 +21,45 @@ function PastEventCard({ title, description, images }) {
     },
   };
   return (
-    <div>
-      <div
-        className="bg-gradient-to-r from-white to-purple-200 mt-20 mb-10 ml-20 shadow-xl p-5 rounded-lg max-w-4xl"
-        style={{ height: "30vw", width: "30vw" }}
-      >
-        <div className="flex flex-col md:flex-row ">
-          <div className="flex flex-col justify-center items-stretch md:mr-10 mb-4 md:mb-0 w-full md:w-1/2 h-auto">
+    <section id="second-section" className="relative p-0 bg-transparent overflow-hidden">
+  
+      {/* <div className="flex flex-col justify-center mb-4 text-left w-full">
+        <h1 className="text-2xl font-bold mb-4">{title}</h1>
+        <p className="text-lg">{description}</p>
+      </div> */}
+     
+      
+
+      <div className="bg-gradient-to-tl from-white to- glow m-4 shadow-xl p-5 rounded-lg max-w-xs">
+          <div className="flex flex-col justify-center mb-4 text-left w-full">
             <h1 className="text-2xl font-bold mb-4">{title}</h1>
             <p className="text-lg">{description}</p>
           </div>
-          <div className="w-full md:w-1/2 h-auto">
-            <Carousel
-              responsive={responsive}
-              infinite={true}
-              autoPlay={true}
-              autoPlaySpeed={3000}
-            >
-              {images.map((image, idx) => (
-                <div key={idx}>
-                  <img
-                    className="w-full h-auto rounded-lg"
-                    src={image}
-                    alt={`Slide ${idx + 1}`}
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </div>
-        </div>
+          <div className="w-full">
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+        >
+          {images.map((image, idx) => (
+            <div key={idx}>
+              <img
+                className="w-full h-auto rounded-lg"
+                src={image}
+                alt={`Slide ${idx + 1}`}
+              />
+            </div>
+          ))}
+        </Carousel>
       </div>
-    </div>
+        </div>
+       
+
+      
+   
+    
+    </section>
   );
 }
 export default PastEventCard;

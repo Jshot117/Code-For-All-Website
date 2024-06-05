@@ -35,8 +35,9 @@ function App() {
           <img src={purpleblender} alt="Purple Blender" className="w-screen" />
         </div>
         <LatestEvent className="bg-custom-dark-blue" />
+        <PastEvent ref={eventSection} />
       </div>
-      <PastEvent ref={eventSection} />
+   
       <Social ref={contactSection} />
     </>
   );
