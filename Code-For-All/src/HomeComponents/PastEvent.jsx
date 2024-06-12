@@ -22,18 +22,12 @@ function PastEvent() {
       id="second-section"
       className="relative p-20 bg-transparent overflow-hidden"
     >
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none   bg-transparent overflow-hidden">
         {" "}
         {/* Add pointer-events-none class */}
-        <Lottie options={defaultOptions} height="93%" width="100%" />
+        <Lottie options={defaultOptions}  />
       </div>
-      <div className="relative justify-center">
-        <IncomingEvent
-          title={INCOMINGEVENTSINFO[0].title}
-          description={INCOMINGEVENTSINFO[0].description}
-          images={INCOMINGEVENTSINFO[0].image}
-        ></IncomingEvent>
-      </div>
+    
       <div className="relative z-10 flex flex-wrap justify-center">
         {PASTEVENTSINFO.map((event, index) => (
           <PastEventCard
@@ -43,7 +37,15 @@ function PastEvent() {
             images={event.image}
           />
         ))}
-      </div>
+     
+
+      
+        <IncomingEvent
+          title={INCOMINGEVENTSINFO[0].title}
+          description={INCOMINGEVENTSINFO[0].description}
+          images={INCOMINGEVENTSINFO[0].image}
+        ></IncomingEvent>
+       </div>
     </section>
   );
 }

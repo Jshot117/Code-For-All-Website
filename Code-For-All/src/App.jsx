@@ -31,11 +31,12 @@ function App() {
         <Board className="bg-custom-dark-blue" ref={boardSection} />
       </div>
       <div className="relative">
-        <div className="absolute inset-x-0 -top-20 flex z-0">
+        <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
           <img src={purpleblender} alt="Purple Blender" className="w-screen" />
         </div>
-        <LatestEvent className="bg-custom-dark-blue" />
         <PastEvent ref={eventSection} />
+        <LatestEvent className="bg-custom-dark-blue" />
+        
       </div>
    
       <Social ref={contactSection} />
