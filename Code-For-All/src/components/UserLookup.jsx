@@ -16,7 +16,7 @@ const UserLookup = () => {
   const fetchDiscordStats = async (discordUsername) => {
     try {
       const response = await axios.get(
-        "https://108.30.159.119:5000/api/discord_lookup",
+        "https://108.30.159.119:5001/api/discord_lookup",
         {
           headers: {
             "discord-username": discordUsername, // Send Discord username in the header
@@ -43,7 +43,7 @@ const UserLookup = () => {
   const fetchLeetCodeStats = async (leetCodeUsername) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/leetcode_lookup",
+        "https://108.30.159.119:5001/api/leetcode_lookup",
         {
           headers: {
             "leetcode-username": leetCodeUsername,
@@ -69,7 +69,7 @@ const UserLookup = () => {
   const fetchLeetcodeAC = async (leetCodeUsername) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/leetcode_ac",
+        "https://108.30.159.119:5001/api/leetcode_ac",
         {
           headers: {
             "leetcode-username": leetCodeUsername,
