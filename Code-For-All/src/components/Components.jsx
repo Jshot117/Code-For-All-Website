@@ -15,7 +15,7 @@ const Callback = () => {
     console.log("Code:", code);
 
     if (code) {
-      fetch(`http://localhost:5000/callback?code=${code}`)
+      fetch(`http://108.30.159.119:5000/callback?code=${code}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.user) {
