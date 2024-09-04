@@ -13,7 +13,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const response = await axios.get("https://108.30.159.119:5001/leaderboard");
+        const response = await axios.get("https://server.rakibshahid.com/leaderboard");
         setLeaderboard(response.data);
       } catch (error) {
         console.error("Error fetching leaderboard data:", error);

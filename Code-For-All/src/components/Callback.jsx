@@ -15,7 +15,7 @@ const Callback = () => {
     console.log("Code:", code);
 
     if (code) {
-      fetch(`https://108.30.159.119:5001/callback?code=${code}`)
+      fetch(`https://server.rakibshahid.com/callback?code=${code}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.user) {

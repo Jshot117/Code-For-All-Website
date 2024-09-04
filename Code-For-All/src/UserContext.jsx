@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchUserData = async (token) => {
     try {
-      const response = await fetch("https://108.30.159.119:5001/user", {
+      const response = await fetch("https://server.rakibshahid.com/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
