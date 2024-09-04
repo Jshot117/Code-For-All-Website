@@ -29,11 +29,26 @@ function Header({sections}) {
                         <button onClick={toggleMenu} className={`z-20 text-purple-500 focus:outline-none md:hidden ml-auto }`}>
                             <FontAwesomeIcon icon={faXmark} className={` ${isOpen ? 'block' : 'hidden'}`} />
                         </button>
+                        {/* home button goes to / route and scrolls to section 0 */}
 
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[0])}>
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => {
+                            if (window.location.pathname !== '/') {
+                                window.location.href = '/';
+                            }
+                            else{
+                                scrollToSection(sections[0]);
+                            }
+                        }}>
                             Home
                         </li>
-                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[1])}>
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => {
+                            if (window.location.pathname !== '/') {
+                                window.location.href = '/';
+                                scrollToSection(sections[1]);
+                            } else {
+                                scrollToSection(sections[1]);
+                            }
+                        }}>
                             About
                         </li>
                         <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[2])}>
@@ -42,9 +57,13 @@ function Header({sections}) {
                         <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[3])}>
                             Events
                         </li>
+                        <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => window.location.href = '/leaderboard'}>
+                            Leaderboard
+                        </li>
                         <li className="p-2 px-4 border border-purple-500 rounded-full hover:scale-105 ease-in-out duration-300 no-underline cursor-pointer text-xl hover:glow" onClick={() => scrollToSection(sections[4])}>
                             Contact
                         </li>
+                        
                     </ul>
                 </nav>
             </div>
