@@ -16,7 +16,7 @@ const UserLookup = () => {
   const fetchDiscordStats = async (discordUsername) => {
     try {
       const response = await axios.get(
-        "http://108.30.159.119:5000/api/discord_lookup",
+        "https://108.30.159.119:5000/api/discord_lookup",
         {
           headers: {
             "discord-username": discordUsername, // Send Discord username in the header
