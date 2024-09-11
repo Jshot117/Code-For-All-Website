@@ -5,41 +5,51 @@ import Hero from "./HomeComponents/Hero";
 import Board from "./HomeComponents/Board";
 import Social from "./HomeComponents/Social";
 import PastEvent from "./HomeComponents/PastEvent";
-import LottieAnimation from "./HomeComponents/LottieAnimation"; // Lottie component
+import LottieAnimation from "./HomeComponents/LottieAnimation";
 import purpleblender from './assets/background blender purple.png';
-import LatestEvent from "./HomeComponents/LatestEvent";
 
 function App() {
-  const homeSection = useRef(null);
-  const boardSection = useRef(null);
-  const aboutSection = useRef(null);
-  const eventSection = useRef(null);
-  const contactSection = useRef(null);
-  const sections = [homeSection, aboutSection, boardSection, eventSection, contactSection];
+  // const homeRef = useRef(null);
+  // const aboutRef = useRef(null);
+  // const boardRef = useRef(null);
+  // const eventRef = useRef(null);
+  // const contactRef = useRef(null);
+
+  // const sections = {
+  //   home: homeRef,
+  //   about: aboutRef,
+  //   board: boardRef,
+  //   event: eventRef,
+  //   contact: contactRef
+  // };
 
   return (
     <>
       <div className="">
         <LottieAnimation />
       </div>
-      <Header sections={sections} />
-      <Hero className="mb-20" ref={{ homeSection, aboutSection }} />
-      <div className="relative">
+      <div id="home">
+        <Header />
+      </div>
+      <Hero className="mb-20" />
+      <div id="about">
+        {/* About section content */}
+      </div>
+      <div id="board" className="relative">
         <div className="absolute inset-x-0 -bottom-20 flex z-10 opacity-40 pointer-events-none">
           <img src={purpleblender} alt="Purple Blender" className="w-screen" />
         </div>
-        <Board className="bg-custom-dark-blue" ref={boardSection} />
+        <Board className="bg-custom-dark-blue" />
       </div>
-      <div className="relative">
+      <div id="event" className="relative">
         <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
           <img src={purpleblender} alt="Purple Blender" className="w-screen" />
         </div>
-        <PastEvent ref={eventSection} />
-        <LatestEvent className="bg-custom-dark-blue" />
-        
+        <PastEvent />
       </div>
-   
-      <Social ref={contactSection} />
+      <div id="contact">
+        <Social />
+      </div>
     </>
   );
 }

@@ -18,8 +18,8 @@ const Hero = forwardRef((props, ref) => {
     };
 
     return (
-        <div className="relative flex items-center" ref = {ref.homeSection}>
-            <section className="opacity-100 mt-0 mb-0  md:container md:mx-auto text-center rounded-lg p-8" style={{ backdropFilter: 'blur(2px)' }}>
+        <div className="relative flex items-center" >
+            <section className=" mt-0 mb-0  md:container md:mx-auto text-center rounded-lg p-8" style={{ backdropFilter: 'blur(2px)' }}>
                 <Lottie options={defaultOptions} height={300} width={300} className="mx-auto mb-0" />
                 <h1 className="hover:scale-105 ease-in-out duration-300 p-0 
                             bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400 
@@ -32,7 +32,7 @@ const Hero = forwardRef((props, ref) => {
                 <span className="text-blue-500">Building</span>{" "}
                 <span className="text-orange-300">Futures</span>
                 </p>
-                <p className="text-lg md:text-xl mb-8 text-center font-mono opacity-100 " ref = {ref.aboutSection}>
+                <p className="text-lg md:text-xl mb-8 text-center font-mono opacity-100 " >
 
 
                 {/* --Text with different colors, I didnt like the look but you can try it - Romel     */}
@@ -53,7 +53,7 @@ const Hero = forwardRef((props, ref) => {
                  achieve our full potential as coders and problem-solvers!</span>{" "} 
 
                                                                    </p>
-                <button onClick={handleClick} className="p-3 px-8 border border-purple-500 rounded-full text-xl hover:scale-105 ease-in-out duration-300 text-purple-500 hover:bg-purple-500 hover:text-white  font-semibold font-mono hover:glow">Get Started</button>
+                <button onClick={handleClick} className="bg-purple-500 p-3 px-8 border border-purple-500 rounded-full text-xl hover:scale-105 ease-in-out duration-300 text-white font-semibold font-mono hover:glow">Get Started</button>
             </section>
         </div>
     );
