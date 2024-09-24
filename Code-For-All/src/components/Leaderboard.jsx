@@ -40,7 +40,7 @@ const Leaderboard = () => {
     y: [0, -10, 0], 
     transition: {
       y: {
-        duration: 5, 
+        duration: 3, 
         repeat: Infinity,
         repeatType: "loop",
       },
@@ -157,7 +157,7 @@ const Leaderboard = () => {
         </Container>
         
       </div>
-      <div style={{paddingTop:'1.5em'}} className="social-container">
+      <div style={{paddingTop:'7rem'}} className="social-container">
         <Social />
       </div>
     </div>
