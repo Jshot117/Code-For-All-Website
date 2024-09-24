@@ -15,22 +15,23 @@ import Callback from "./components/Callback";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  // const homeRef = useRef(null);
-  // const aboutRef = useRef(null);
-  // const boardRef = useRef(null);
-  // const eventRef = useRef(null);
-  // const contactRef = useRef(null);
+//   const homeRef = useRef(null);
+//   const aboutRef = useRef(null);
+//   const boardRef = useRef(null);
+//   const eventRef = useRef(null);
+//   const contactRef = useRef(null);
 
-  // const sections = {
-  //   home: homeRef,
-  //   about: aboutRef,
-  //   board: boardRef,
-  //   event: eventRef,
-  //   contact: contactRef
-  // };
+//   const sections = {
+//     home: homeRef,
+//     about: aboutRef,
+//     board: boardRef,
+//     event: eventRef,
+//     contact: contactRef
+//   };
 
   return (
 
+    
     <Router>
         <Routes>
             <Route path="/leaderboard" element={<Leaderboard />} />
@@ -41,30 +42,38 @@ function App() {
             <Route path="/callback" element={<Callback />} />
             <Route path="/" element={
                 <>
-                      <div className="">
-                          <LottieAnimation />
-                      </div>
-                      <Header sections={sections} />
-                      <Hero className="mb-20" ref={{ homeSection, aboutSection }} />
-                      <div className="relative">
-                          <div className="absolute inset-x-0 -bottom-20 flex z-10 opacity-40 pointer-events-none">
-                              <img src={purpleblender} alt="Purple Blender" className="w-screen" />
-                          </div>
-                          <Board className="bg-custom-dark-blue" ref={boardSection} />
-                      </div>
-                      <div className="relative">
-                          <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
-                              <img src={purpleblender} alt="Purple Blender" className="w-screen" />
-                          </div>
-                          <PastEvent ref={eventSection} />
-                          <LatestEvent className="bg-custom-dark-blue" />
-
-                      </div>
-                  <Social ref={contactSection} /></>
+                <div className="">
+                  <LottieAnimation />
+                </div>
+                <div id="home">
+                  <Header />
+                </div>
+                <Hero className="mb-20" />
+                <div id="about">
+                  {/* About section content */}
+                </div>
+                <div id="board" className="relative">
+                  <div className="absolute inset-x-0 -bottom-20 flex z-10 opacity-40 pointer-events-none">
+                    <img src={purpleblender} alt="Purple Blender" className="w-screen" />
+                  </div>
+                  <Board className="bg-custom-dark-blue" />
+                </div>
+                <div id="event" className="relative">
+                  <div className="absolute inset-x-0 -top-20 flex z-10 h-72 opacity-85">
+                    <img src={purpleblender} alt="Purple Blender" className="w-screen" />
+                  </div>
+                  <PastEvent />
+                </div>
+                <div id="contact">
+                  <Social />
+                </div>
+              </>
             } />
         </Routes>
       
     </Router>
+    
+    
   );
 }
 

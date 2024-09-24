@@ -157,7 +157,7 @@ const Leaderboard = () => {
         </Container>
         
       </div>
-      <div className="social-container">
+      <div style={{paddingTop:'1.5em'}} className="social-container">
         <Social />
       </div>
     </div>
