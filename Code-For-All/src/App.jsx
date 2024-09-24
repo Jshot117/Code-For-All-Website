@@ -5,9 +5,8 @@ import Hero from "./HomeComponents/Hero";
 import Board from "./HomeComponents/Board";
 import Social from "./HomeComponents/Social";
 import PastEvent from "./HomeComponents/PastEvent";
-import LottieAnimation from "./HomeComponents/LottieAnimation"; // Lottie component
+import LottieAnimation from "./HomeComponents/LottieAnimation";
 import purpleblender from './assets/background blender purple.png';
-import LatestEvent from "./HomeComponents/LatestEvent";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Leaderboard from "./components/Leaderboard";
@@ -16,14 +15,22 @@ import Callback from "./components/Callback";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const homeSection = useRef(null);
-  const boardSection = useRef(null);
-  const aboutSection = useRef(null);
-  const eventSection = useRef(null);
-  const contactSection = useRef(null);
-  const sections = [homeSection, aboutSection, boardSection, eventSection, contactSection];
+  // const homeRef = useRef(null);
+  // const aboutRef = useRef(null);
+  // const boardRef = useRef(null);
+  // const eventRef = useRef(null);
+  // const contactRef = useRef(null);
+
+  // const sections = {
+  //   home: homeRef,
+  //   about: aboutRef,
+  //   board: boardRef,
+  //   event: eventRef,
+  //   contact: contactRef
+  // };
 
   return (
+
     <Router>
         <Routes>
             <Route path="/leaderboard" element={<Leaderboard />} />

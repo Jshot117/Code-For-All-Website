@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 import NewsLetter from './NewsLetter';
 const Social = forwardRef((props, ref) => {
     return (
-        <div className = "flex flex-col items-center pb-10 mt-40 md:flex md:flex-row border-t bg-gray-100" ref = {ref}>
+        <div className = "flex flex-col items-center pb-10 md:flex md:flex-row border-t bg-gray-100" ref = {ref}>
             <div className="container mx-auto flex-row items-center">
                 <div className="flex  items-center justify-between p-4">
                     <div className="flex  items-center mr-20 ">
