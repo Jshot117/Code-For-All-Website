@@ -62,7 +62,7 @@
 .username-hover {
   position: absolute;
   top: -40px;
-  font-size: 1.75rem; /* Adjust the font size as needed */
+  font-size: 1.75rem;
   font-weight: bold;
   color: white;
   white-space: nowrap; /* Prevent the text from wrapping */
@@ -71,12 +71,10 @@
   text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
 }
 
-/* Points styles */
 .points {
   font-size: 1.25rem;
 }
 
-/* Table styles */
 .leaderboard-table-container {
   width: 80%;
   margin: 0 auto;
@@ -106,14 +104,18 @@
   padding: 20px;
 }
 
-/* Social component positioning */
 .social-container {
   bottom: 0;
   left: 0;
   right: 0;
-  margin-top: auto; /* Pushes the social container to the bottom */
+  margin-top: auto;
 }
 .content-container {
-  flex: 1; /* Make this container take the remaining height */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  flex: 1;
+  overflow-y: auto;
+}
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
