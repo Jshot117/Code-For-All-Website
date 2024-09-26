@@ -6,6 +6,7 @@ import Header from "../HomeComponents/Header";
 import LottieAnimation from "../HomeComponents/LottieAnimation";
 import Social from "../HomeComponents/Social";
 import "./Leaderboard.css";
+import { SiLeetcode, SiDiscord } from "react-icons/si";
 import { FaSearch } from "react-icons/fa";
 import {
   Card,
@@ -23,7 +24,8 @@ const Leaderboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
   const [showCard, setShowCard] = useState(false);
-  const [userName, setUserName] = useState(null);
+  const [userDiscordName, setDiscordName] = useState(null);
+  const [userLeetcodeName, setLeetcodeName] = useState(null);
   const [userAvatarURL, setAvatarURL] = useState("");
   const [userGlobalRanking, setGlobalRanking] = useState("");
   const [userLocalRanking, setLocalRanking] = useState("");
@@ -107,9 +109,11 @@ const Leaderboard = () => {
             } else {
               console.log("DC User data:", response.data);
             }
-            setUserName(response.data.username);
+            setDiscordName(response.data.discord_username);
+            setLeetcodeName(response.data.leetcode_username);
             setAvatarURL(response.data.avatar);
             setGlobalRanking(response.data.ranking);
+            setLocalRanking(response.data.local_ranking);
           } catch (error) {
             console.error("Error fetching user data:", error);
           }
@@ -287,7 +291,7 @@ const Leaderboard = () => {
                           margin: "auto",
                         }}
                         src={userAvatarURL}
-                        alt={`${userName}'s avatar`}
+                        alt={`${userDiscordName}'s avatar`}
                         borderRadius="lg"
                       />
                       <Stack mt="6" spacing="3">
@@ -297,16 +301,28 @@ const Leaderboard = () => {
                           }}
                           size="md"
                         >
-                          {userName}
+                          <SiDiscord />
+                          {userDiscordName}
+                        </Heading>
+                        <Heading
+                          style={{
+                            margin: "auto",
+                          }}
+                          size="md"
+                        >
+                          <SiLeetcode />
+                          {userLeetcodeName}
                         </Heading>
                         <Text
                           style={{
                             margin: "auto",
                           }}
                         >
-                          {/* format global ranking with commas */}
                           <b>Global Ranking:</b>{" "}
                           {userGlobalRanking.toLocaleString()}
+                          <br />
+                          <b>Local Ranking:</b>{" "}
+                          {userLocalRanking.toLocaleString()}
                         </Text>
                       </Stack>
                     </CardBody>
