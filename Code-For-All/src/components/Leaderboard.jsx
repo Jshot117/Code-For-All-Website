@@ -24,9 +24,9 @@ const Leaderboard = () => {
   const [typingTimeout, setTypingTimeout] = useState(null);
   const [showCard, setShowCard] = useState(false);
   const [userName, setUserName] = useState(null);
-  const [userAvatarURL, setLoading] = useState(false);
-  const [userGlobalRanking, setError] = useState("");
-  const [userLocalRanking, setUserLocalRanking] = useState("");
+  const [userAvatarURL, setAvatarURL] = useState("");
+  const [userGlobalRanking, setGlobalRanking] = useState("");
+  const [userLocalRanking, setLocalRanking] = useState("");
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -107,6 +107,9 @@ const Leaderboard = () => {
             } else {
               console.log("DC User data:", response.data);
             }
+            setUserName(response.data.username);
+            setAvatarURL(response.data.avatar);
+            setGlobalRanking(response.data.ranking);
           } catch (error) {
             console.error("Error fetching user data:", error);
           }
@@ -227,7 +230,7 @@ const Leaderboard = () => {
           <div className="input-container">
             <input
               type="text"
-              placeholder="Search for a user..."
+              placeholder="Search for a Discord/Leetcode username..."
               value={searchQuery}
               onChange={handleSearchChange}
               className="search-input"
@@ -280,20 +283,30 @@ const Leaderboard = () => {
                   <Card>
                     <CardBody>
                       <Image
-                        src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                        alt="Green double couch with wooden legs"
+                        style={{
+                          margin: "auto",
+                        }}
+                        src={userAvatarURL}
+                        alt={`${userName}'s avatar`}
                         borderRadius="lg"
                       />
                       <Stack mt="6" spacing="3">
-                        <Heading size="md">{searchQuery}</Heading>
-                        <Text>
-                          This sofa is perfect for modern tropical spaces,
-                          baroque-inspired spaces, earthy toned spaces, and for
-                          people who love a chic design with a sprinkle of
-                          vintage.
-                        </Text>
-                        <Text color="blue.600" fontSize="2xl">
-                          $450
+                        <Heading
+                          style={{
+                            margin: "auto",
+                          }}
+                          size="md"
+                        >
+                          {userName}
+                        </Heading>
+                        <Text
+                          style={{
+                            margin: "auto",
+                          }}
+                        >
+                          {/* format global ranking with commas */}
+                          <b>Global Ranking:</b>{" "}
+                          {userGlobalRanking.toLocaleString()}
                         </Text>
                       </Stack>
                     </CardBody>
