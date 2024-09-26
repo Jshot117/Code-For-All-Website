@@ -7,7 +7,7 @@ import Social from "./HomeComponents/Social";
 import PastEvent from "./HomeComponents/PastEvent";
 import LottieAnimation from "./HomeComponents/LottieAnimation";
 import purpleblender from './assets/background blender purple.png';
-
+import { ChakraProvider } from "@chakra-ui/react"; // Import ChakraProvider
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Leaderboard from "./components/Leaderboard";
 import UserLookup from "./components/UserLookup";
@@ -15,33 +15,20 @@ import Callback from "./components/Callback";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-//   const homeRef = useRef(null);
-//   const aboutRef = useRef(null);
-//   const boardRef = useRef(null);
-//   const eventRef = useRef(null);
-//   const contactRef = useRef(null);
-
-//   const sections = {
-//     home: homeRef,
-//     about: aboutRef,
-//     board: boardRef,
-//     event: eventRef,
-//     contact: contactRef
-//   };
-
   return (
-
-    
-    <Router>
+    <ChakraProvider>
+      <Router>
         <Routes>
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route
             path="/userlookup"
             element={<ProtectedRoute component={UserLookup} />}
-            />
-            <Route path="/callback" element={<Callback />} />
-            <Route path="/" element={
-                <>
+          />
+          <Route path="/callback" element={<Callback />} />
+          <Route
+            path="/"
+            element={
+              <>
                 <div className="">
                   <LottieAnimation />
                 </div>
@@ -68,12 +55,11 @@ function App() {
                   <Social />
                 </div>
               </>
-            } />
+            }
+          />
         </Routes>
-      
-    </Router>
-    
-    
+      </Router>
+    </ChakraProvider>
   );
 }
 
