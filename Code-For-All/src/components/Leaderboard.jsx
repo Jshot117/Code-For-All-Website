@@ -298,31 +298,52 @@ const Leaderboard = () => {
                         <Heading
                           style={{
                             margin: "auto",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
                           }}
                           size="md"
                         >
-                          <SiDiscord />
+                          <SiDiscord style={{ marginRight: "8px" }} />
                           {userDiscordName}
                         </Heading>
                         <Heading
                           style={{
                             margin: "auto",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
                           }}
                           size="md"
                         >
-                          <SiLeetcode />
+                          <SiLeetcode style={{ marginRight: "8px" }} />
                           {userLeetcodeName}
                         </Heading>
                         <Text
                           style={{
                             margin: "auto",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
                           }}
                         >
-                          <b>Global Ranking:</b>{" "}
-                          {userGlobalRanking.toLocaleString()}
-                          <br />
-                          <b>Local Ranking:</b>{" "}
-                          {userLocalRanking.toLocaleString()}
+                          <b style={{ marginRight: "8px" }}>Global Ranking:</b>{" "}
+                          {userGlobalRanking
+                            ? userGlobalRanking.toLocaleString()
+                            : "N/A"}
+                        </Text>
+                        <Text
+                          style={{
+                            margin: "auto",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <b style={{ marginRight: "8px" }}>Local Ranking:</b>{" "}
+                          {userLocalRanking
+                            ? userLocalRanking.toLocaleString()
+                            : "N/A"}
                         </Text>
                       </Stack>
                     </CardBody>
