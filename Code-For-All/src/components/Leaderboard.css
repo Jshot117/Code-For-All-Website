@@ -4,7 +4,7 @@
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Prevent overflow by default */
+  overflow: hidden;
 }
 
 .podium-container {
@@ -65,9 +65,9 @@
   font-size: 1.75rem;
   font-weight: bold;
   color: white;
-  white-space: nowrap; /* Prevent the text from wrapping */
-  overflow: hidden; /* Hide any overflowing text */
-  text-overflow: ellipsis; /* Show ellipsis (...) for truncated text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
 }
 
@@ -122,15 +122,15 @@
 }
 .input-container {
   position: relative;
-  width: 60%; /* 60% of the table width */
-  margin: 20px auto; /* Center the search bar */
+  width: 60%;
+  margin: 20px auto;
 }
 
 .search-input {
   width: 100%;
-  padding: 10px 40px 10px 15px; /* Padding to leave space for the icon */
+  padding: 10px 40px 10px 15px;
   font-size: 1.25rem;
-  border-radius: 25px; /* Rounded corners */
+  border-radius: 25px;
   border: 1px solid #ccc;
 }
 
@@ -141,5 +141,5 @@
   transform: translateY(-50%);
   font-size: 1.5rem;
   color: #888;
-  /* cursor: pointer; */
+  cursor: pointer;
 }

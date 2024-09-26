@@ -8,6 +8,7 @@ import Social from "../HomeComponents/Social";
 import "./Leaderboard.css";
 import { SiLeetcode, SiDiscord } from "react-icons/si";
 import { FaSearch } from "react-icons/fa";
+
 import {
   Card,
   CardBody,
@@ -72,7 +73,6 @@ const Leaderboard = () => {
     exit: { opacity: 0, transition: { duration: 0.3 } },
   };
 
-  // Handle search input with a delay (debounce)
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
@@ -118,17 +118,16 @@ const Leaderboard = () => {
             console.error("Error fetching user data:", error);
           }
 
-          setShowCard(true); // Show the card when user is done typing
-          document.body.style.overflow = "hidden"; // Disable scrolling when the card is active
+          setShowCard(true);
+          document.body.style.overflow = "hidden";
         } else {
           setShowCard(false);
-          document.body.style.overflow = "auto"; // Re-enable scrolling
+          document.body.style.overflow = "auto";
         }
       }, 1000)
     );
   };
 
-  // Handle clicking outside the card or clearing the input to hide the card
   const handleCloseCard = () => {
     setShowCard(false);
   };
@@ -239,14 +238,54 @@ const Leaderboard = () => {
               onChange={handleSearchChange}
               className="search-input"
             />
-            <FaSearch className="search-icon" />
+            <FaSearch
+              className="search-icon"
+              onClick={() => {
+                if (searchQuery.trim() !== "") {
+                  setTypingTimeout(
+                    setTimeout(async () => {
+                      let response = null;
+                      try {
+                        response = await axios.get(
+                          `https://server.rakibshahid.com/api/discord_lookup`,
+                          {
+                            headers: {
+                              "discord-username": searchQuery,
+                            },
+                            validateStatus: false,
+                          }
+                        );
+                        if (response.status === 404) {
+                          response = await axios.get(
+                            `https://server.rakibshahid.com/api/leetcode_lookup`,
+                            {
+                              headers: {
+                                "leetcode-username": searchQuery,
+                              },
+                              validateStatus: false,
+                            }
+                          );
+                        }
+                        setDiscordName(response.data.discord_username);
+                        setLeetcodeName(response.data.leetcode_username);
+                        setAvatarURL(response.data.avatar);
+                        setGlobalRanking(response.data.ranking);
+                        setLocalRanking(response.data.local_ranking);
+                      } catch (error) {
+                        console.error("Error fetching user data:", error);
+                      }
+                      setShowCard(true);
+                      document.body.style.overflow = "hidden";
+                    })
+                  );
+                }
+              }}
+            />
           </div>
 
-          {/* Card with grey background */}
           <AnimatePresence>
             {showCard && (
               <>
-                {/* Grey background with fade-in */}
                 <motion.div
                   className="grey-background"
                   variants={fadeInVariants}
@@ -264,11 +303,10 @@ const Leaderboard = () => {
                   }}
                   onClick={() => {
                     setShowCard(false);
-                    document.body.style.overflow = "auto"; // Re-enable scrolling when card closes
+                    document.body.style.overflow = "auto";
                   }}
                 />
 
-                {/* Card with fade-in */}
                 <motion.div
                   className="card-container"
                   variants={fadeInVariants}
@@ -290,7 +328,11 @@ const Leaderboard = () => {
                         style={{
                           margin: "auto",
                         }}
-                        src={userAvatarURL}
+                        src={
+                          userAvatarURL
+                            ? userAvatarURL
+                            : "https://media1.tenor.com/m/lxJgp-a8MrgAAAAd/laeppa-vika-half-life-alyx.gif"
+                        }
                         alt={`${userDiscordName}'s avatar`}
                         borderRadius="lg"
                       />
@@ -305,8 +347,11 @@ const Leaderboard = () => {
                           size="md"
                         >
                           <SiDiscord style={{ marginRight: "8px" }} />
-                          {userDiscordName}
+                          {userDiscordName
+                            ? userDiscordName
+                            : "Username not found"}
                         </Heading>
+
                         <Heading
                           style={{
                             margin: "auto",
@@ -317,8 +362,11 @@ const Leaderboard = () => {
                           size="md"
                         >
                           <SiLeetcode style={{ marginRight: "8px" }} />
-                          {userLeetcodeName}
+                          {userLeetcodeName
+                            ? userLeetcodeName
+                            : "Username not found"}
                         </Heading>
+
                         <Text
                           style={{
                             margin: "auto",
@@ -332,6 +380,7 @@ const Leaderboard = () => {
                             ? userGlobalRanking.toLocaleString()
                             : "N/A"}
                         </Text>
+
                         <Text
                           style={{
                             margin: "auto",
@@ -353,7 +402,6 @@ const Leaderboard = () => {
             )}
           </AnimatePresence>
 
-          {/* Leaderboard content */}
           <motion.div initial="hidden" animate="visible">
             <Table
               striped
