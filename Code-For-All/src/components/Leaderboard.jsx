@@ -30,6 +30,7 @@ const Leaderboard = () => {
   const [userAvatarURL, setAvatarURL] = useState("");
   const [userGlobalRanking, setGlobalRanking] = useState("");
   const [userLocalRanking, setLocalRanking] = useState("");
+  const [userWins, setWins] = useState(0);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -114,6 +115,7 @@ const Leaderboard = () => {
             setAvatarURL(response.data.avatar);
             setGlobalRanking(response.data.ranking);
             setLocalRanking(response.data.local_ranking);
+            setWins(response.data.wins);
           } catch (error) {
             console.error("Error fetching user data:", error);
           }
@@ -271,6 +273,7 @@ const Leaderboard = () => {
                         setAvatarURL(response.data.avatar);
                         setGlobalRanking(response.data.ranking);
                         setLocalRanking(response.data.local_ranking);
+                        setWins(response.data.wins);
                       } catch (error) {
                         console.error("Error fetching user data:", error);
                       }
@@ -393,6 +396,18 @@ const Leaderboard = () => {
                           {userLocalRanking
                             ? userLocalRanking.toLocaleString()
                             : "N/A"}
+                        </Text>
+
+                        <Text
+                          style={{
+                            margin: "auto",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <b style={{ marginRight: "8px" }}>Wins:</b>{" "}
+                          {userWins >= 0 ? userWins.toLocaleString() : "N/A"}
                         </Text>
                       </Stack>
                     </CardBody>
