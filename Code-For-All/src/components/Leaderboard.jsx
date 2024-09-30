@@ -9,16 +9,7 @@ import "./Leaderboard.css";
 import { SiLeetcode, SiDiscord } from "react-icons/si";
 import { FaSearch } from "react-icons/fa";
 
-import {
-  Card,
-  CardBody,
-  Image,
-  Stack,
-  Heading,
-  Text,
-  Button,
-  Box,
-} from "@chakra-ui/react";
+import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
