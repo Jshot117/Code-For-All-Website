@@ -9,7 +9,7 @@ const Social = forwardRef((props, ref) => {
             <div className="container mx-auto flex-row items-center">
                 <div className="flex  items-center justify-between p-4">
                     <div className="flex  items-center mr-20 ">
-                        <img src="src/assets/logo.png" alt="Code For All Logo" className="hover:scale-105 h-8" />
+                        <img src="logo.png" alt="Code For All Logo" className="hover:scale-105 h-8" />
                         <span className="ml-2 text-xl font-bold">CODE FOR ALL</span>
                     </div>
 
