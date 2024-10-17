@@ -16,7 +16,7 @@
 }
 
 .title-container {
-  max-width: 85vw;
+  /* max-width: 85vw; */
   font-size: min(3rem, 20vw);
   color: #d1a5fd;
   font-weight: bold;
