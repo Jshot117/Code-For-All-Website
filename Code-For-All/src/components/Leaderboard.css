@@ -15,14 +15,21 @@
   margin-bottom: 40px;
 }
 
-/* Podium styles */
+.title-container {
+  font-size: min(3rem, 20vw);
+  color: #d1a5fd;
+  font-weight: bold;
+  padding-bottom: 120px;
+}
+
 .podium {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   padding: 10px;
-  width: 100px;
+  width: 18%;
+  max-width: 100px;
   border-radius: 10px;
   text-align: center;
   font-size: 1.5rem;
@@ -48,7 +55,6 @@
   order: 3;
 }
 
-/* Rank number */
 .rank-number {
   font-size: 2.5rem;
   color: white;
@@ -58,11 +64,11 @@
   text-shadow: 0 0 5px black, 0 0 5px black;
 }
 
-/* Username styles */
 .username-hover {
   position: absolute;
   top: -40px;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  max-width: 25vw;
   font-weight: bold;
   color: white;
   white-space: nowrap;
@@ -72,14 +78,16 @@
 }
 
 .points {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  font-weight: bold;
 }
 
 .leaderboard-table-container {
-  width: 80%;
+  width: 85vw;
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
+  display: table;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.8);
 }
@@ -88,9 +96,8 @@
   background-color: #543d6d;
   color: white;
   text-align: center;
-  font-size: 1.75rem;
+  font-size: min(1.75rem, 3.5vw);
   font-weight: bold;
-  padding: 15px;
 }
 
 .table-row {
@@ -100,8 +107,11 @@
 }
 
 .table-cell {
+  font-size: min(1.5rem, 4vw);
   text-align: center;
-  padding: 20px;
+  padding: min(4vw, 30px);
+  padding-top: min(20px, 2vw);
+  padding-bottom: min(20px, 2vw);
 }
 
 .social-container {
@@ -109,11 +119,12 @@
   left: 0;
   right: 0;
   margin-top: auto;
-  padding-top: 7rem;
+  /* padding-top: 7rem; */
 }
 .content-container {
   flex: 1;
   overflow-y: auto;
+  padding-bottom: min(7rem, 10vw);
 }
 .leaderboard-container {
   display: flex;

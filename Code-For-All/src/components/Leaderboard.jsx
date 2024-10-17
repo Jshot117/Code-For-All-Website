@@ -34,8 +34,20 @@ const Leaderboard = () => {
         console.error("Error fetching leaderboard data:", error);
       }
     };
-
     fetchLeaderboard();
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setShowCard(false);
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
   const topThree = leaderboard.slice(0, 3);
   const rest = leaderboard.slice(3);
@@ -133,15 +145,7 @@ const Leaderboard = () => {
         </div>
         <Header />
         <Container style={{ margin: "0 auto" }}>
-          <h1
-            className="text-center my-4"
-            style={{
-              fontSize: "4rem",
-              color: "#D1A5FD",
-              fontWeight: "bold",
-              paddingBottom: "120px",
-            }}
-          >
+          <h1 className="text-center my-4 title-container">
             Leetcode Leaderboard
           </h1>
           {/* Podium */}
@@ -160,12 +164,7 @@ const Leaderboard = () => {
                 <span className="username-hover" style={{ top: "-80px" }}>
                   {topThree[2].discord_username}
                 </span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[2].username}
-                </span>
+                <span className="username-hover">{topThree[2].username}</span>
                 <span className="points">{topThree[2].points} points</span>
               </motion.div>
             )}
@@ -177,12 +176,7 @@ const Leaderboard = () => {
                 variants={podiumVariants(0.5)}
               >
                 <span className="rank-number">2</span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[1].username}
-                </span>
+                <span className="username-hover">{topThree[1].username}</span>
                 <span className="username-hover" style={{ top: "-80px" }}>
                   {topThree[1].discord_username}
                 </span>
@@ -211,12 +205,7 @@ const Leaderboard = () => {
                 <span className="username-hover" style={{ top: "-80px" }}>
                   {topThree[0].discord_username}
                 </span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[0].username}
-                </span>
+                <span className="username-hover">{topThree[0].username}</span>
                 <span className="points">{topThree[0].points} points</span>
               </motion.div>
             )}
@@ -276,6 +265,8 @@ const Leaderboard = () => {
               }}
             />
           </div>
+
+          {/* <LookupCard /> */}
 
           <AnimatePresence>
             {showCard && (
@@ -407,34 +398,35 @@ const Leaderboard = () => {
               </>
             )}
           </AnimatePresence>
-
-          <motion.div initial="hidden" animate="visible">
-            <Table
-              striped
-              bordered
-              hover
-              className="leaderboard-table-container"
-            >
-              <thead>
-                <tr className="table-header">
-                  <th>Rank</th>
-                  <th>Discord Username</th>
-                  <th>Leetcode Username</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rest.slice(0, 10).map((user, index) => (
-                  <tr key={index} className="table-row">
-                    <td className="table-cell">{index + 4}</td>
-                    <td className="table-cell">{user.discord_username}</td>
-                    <td className="table-cell">{user.username}</td>
-                    <td className="table-cell">{user.points}</td>
+          <Container className="">
+            <motion.div initial="hidden" animate="visible">
+              <Table
+                //   striped
+                //   bordered
+                //   hover
+                className="leaderboard-table-container"
+              >
+                <thead>
+                  <tr className="table-header">
+                    <th>Rank</th>
+                    <th>Discord Username</th>
+                    <th>Leetcode Username</th>
+                    <th>Points</th>
                   </tr>
-                ))}
-              </tbody>
-            </Table>
-          </motion.div>
+                </thead>
+                <tbody>
+                  {rest.slice(0, 10).map((user, index) => (
+                    <tr key={index} className="table-row">
+                      <td className="table-cell">{index + 4}</td>
+                      <td className="table-cell">{user.discord_username}</td>
+                      <td className="table-cell">{user.username}</td>
+                      <td className="table-cell">{user.points}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </motion.div>
+          </Container>
         </Container>
       </div>
       <div className="social-container">
