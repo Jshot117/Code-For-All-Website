@@ -84,7 +84,8 @@
 }
 
 .leaderboard-table-container {
-  width: 85vw;
+  width: 80%;
+  max-width: 1200px;
   margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
