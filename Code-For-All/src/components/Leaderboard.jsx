@@ -161,7 +161,7 @@ const Leaderboard = () => {
                 variants={podiumVariants(0)}
               >
                 <span className="rank-number">3</span>
-                <span className="username-hover" style={{ top: "-80px" }}>
+                <span className="username-hover" style={{ top: "-4rem" }}>
                   {topThree[2].discord_username}
                 </span>
                 <span className="username-hover">{topThree[2].username}</span>
@@ -177,7 +177,7 @@ const Leaderboard = () => {
               >
                 <span className="rank-number">2</span>
                 <span className="username-hover">{topThree[1].username}</span>
-                <span className="username-hover" style={{ top: "-80px" }}>
+                <span className="username-hover" style={{ top: "-4rem" }}>
                   {topThree[1].discord_username}
                 </span>
                 <span className="points">{topThree[1].points} points</span>
@@ -194,7 +194,7 @@ const Leaderboard = () => {
                   className="crown-icon"
                   style={{
                     position: "absolute",
-                    top: "-135px",
+                    top: "-8rem",
                     fontSize: "3rem",
                   }}
                   animate={crownHoverAnimation}
@@ -202,7 +202,7 @@ const Leaderboard = () => {
                   👑
                 </motion.span>
                 <span className="rank-number">1</span>
-                <span className="username-hover" style={{ top: "-80px" }}>
+                <span className="username-hover" style={{ top: "-4rem" }}>
                   {topThree[0].discord_username}
                 </span>
                 <span className="username-hover">{topThree[0].username}</span>

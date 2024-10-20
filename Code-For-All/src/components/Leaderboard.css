@@ -1,4 +1,3 @@
-/* Container styles */
 .leaderboard-container {
   position: relative;
   min-height: 10vh;
@@ -8,19 +7,13 @@
 }
 
 .podium-container {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 70px;
-  margin-bottom: 40px;
-}
-
-.title-container {
-  /* max-width: 85vw; */
-  font-size: min(3rem, 20vw);
-  color: #d1a5fd;
-  font-weight: bold;
-  padding-bottom: 120px;
+  gap: 2rem;
 }
 
 .podium {
@@ -36,6 +29,41 @@
   font-size: 1.5rem;
   color: #333;
   position: relative;
+  /* overflow: hidden;  */
+}
+
+.username-hover {
+  position: absolute;
+  top: -40px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  max-width: 100%;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: visible;
+  margin: 0 auto;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
+}
+
+@media (max-width: 768px) {
+  .username-hover {
+    top: -2.2rem;
+    font-size: clamp(0.8rem, 1vw, 1rem);
+  }
+
+  .podium {
+    width: 25%;
+    max-width: 80px;
+  }
+}
+
+.title-container {
+  /* max-width: 85vw; */
+  font-size: min(3rem, 20vw);
+  color: #d1a5fd;
+  font-weight: bold;
+  padding-bottom: 120px;
 }
 
 .podium-second {
@@ -65,22 +93,16 @@
   text-shadow: 0 0 5px black, 0 0 5px black;
 }
 
-.username-hover {
-  position: absolute;
-  top: -40px;
-  font-size: 1.5rem;
-  max-width: 25vw;
-  font-weight: bold;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
-}
-
 .points {
   font-size: 1.15rem;
   font-weight: bold;
+}
+
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .leaderboard-table-container {
@@ -88,32 +110,59 @@
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 10px;
-  overflow: hidden;
-  display: table;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.8);
+  table-layout: fixed;
 }
 
+/* Table headers */
 .table-header {
   background-color: #543d6d;
   color: white;
   text-align: center;
-  font-size: min(1.75rem, 3.5vw);
   font-weight: bold;
-}
-
-.table-row {
-  height: 70px;
+  padding: 10px;
   font-size: 1.5rem;
-  font-weight: bold;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .table-cell {
-  font-size: min(1.5rem, 4vw);
   text-align: center;
-  padding: min(4vw, 30px);
-  padding-top: min(20px, 2vw);
-  padding-bottom: min(20px, 2vw);
+  padding: 8px 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.table-row {
+  height: auto;
+}
+
+/* screw this why cant it be rounded normally */
+.table-header th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table-header th:last-child {
+  border-top-right-radius: 10px;
+}
+/*  */
+
+@media (max-width: 768px) {
+  .leaderboard-table-container {
+    font-size: 1rem;
+  }
+
+  .table-header {
+    font-size: clamp(0.7rem, 0.9vw, 1rem);
+    padding: 8px;
+  }
+
+  .table-cell {
+    font-size: clamp(0.7rem, 0.9vw, 1rem);
+    padding: 6px;
+  }
 }
 
 .social-container {
@@ -128,11 +177,7 @@
   overflow-y: auto;
   padding-bottom: min(7rem, 10vw);
 }
-.leaderboard-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+
 .input-container {
   position: relative;
   width: 60%;
