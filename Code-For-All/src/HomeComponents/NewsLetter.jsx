@@ -10,15 +10,32 @@ const NewsLetter = () => {
         return re.test(String(email).toLowerCase());
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (!validateEmail(email)) {
             setError("Please enter a valid email")
             return
         }
-        console.log(email)
-        setEmail('')
-        setError('')
+        try {
+            const response = await fetch('https://server.rakibshahid.com/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+                });
+            if(!response.ok){
+                throw new Error("An error occured. Please try again later");
+            }  
+            console.log(email);
+            setEmail("");
+            setError("");
+        }
+        catch (error) {
+            console.log(error);
+            setError("An error occured. Please try again later");
+            return;
+        }
     }
 
     const handleChange = (e) => {

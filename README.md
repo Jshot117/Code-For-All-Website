@@ -36,6 +36,11 @@ Follow these steps to set up the project and run it locally.
    npm install @fortawesome/fontawesome-svg-core
    npm install @fortawesome/free-solid-svg-icons
    npm install @fortawesome/react-fontawesome
+   npm install axios
+   npm install @chakra-ui/react
+   npm install framer-motion
+   npm install react-bootstrap
+   npm install react-icons
    ```
 
 ### Running the Development Server
