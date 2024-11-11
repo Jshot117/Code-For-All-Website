@@ -1,3 +1,4 @@
+// to do later at some point eventually (never) split into components to not have 500 line file
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Container } from "react-bootstrap";
@@ -8,6 +9,7 @@ import Social from "../HomeComponents/Social";
 import "./Leaderboard.css";
 import { SiLeetcode, SiDiscord } from "react-icons/si";
 import { FaSearch } from "react-icons/fa";
+// import SearchBar from "./SearchBar";
 
 import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
 
@@ -16,6 +18,7 @@ const Leaderboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
   const [showCard, setShowCard] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const [userDiscordName, setDiscordName] = useState(null);
   const [userLeetcodeName, setLeetcodeName] = useState(null);
   const [userAvatarURL, setAvatarURL] = useState("");
@@ -37,8 +40,13 @@ const Leaderboard = () => {
     fetchLeaderboard();
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
+      if (
+        event.key === "Escape" ||
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
         setShowCard(false);
+        setInputDisabled(false);
         document.body.style.overflow = "auto";
       }
     };
@@ -124,18 +132,21 @@ const Leaderboard = () => {
           }
 
           setShowCard(true);
+          setInputDisabled(true);
           document.body.style.overflow = "hidden";
         } else {
           setShowCard(false);
+          setInputDisabled(false);
           document.body.style.overflow = "auto";
         }
-      }, 1000)
+      }, 2000)
     );
   };
 
-  const handleCloseCard = () => {
-    setShowCard(false);
-  };
+  //   const handleCloseCard = () => {
+  //     setShowCard(false);
+  //     setInputDisabled(false);
+  //   };
 
   return (
     <div className="leaderboard-container">
@@ -212,6 +223,12 @@ const Leaderboard = () => {
           </motion.div>
 
           {/* Search bar */}
+          {/* <SearchBar
+            searchQuery={searchQuery}
+            handleSearchChange={handleSearchChange}
+            inputDisabled={inputDisabled}
+          /> */}
+
           <div className="input-container">
             <input
               type="text"
@@ -219,6 +236,7 @@ const Leaderboard = () => {
               value={searchQuery}
               onChange={handleSearchChange}
               className="search-input"
+              disabled={inputDisabled}
             />
             <FaSearch
               className="search-icon"
@@ -258,6 +276,7 @@ const Leaderboard = () => {
                         console.error("Error fetching user data:", error);
                       }
                       setShowCard(true);
+                      setInputDisabled(true);
                       document.body.style.overflow = "hidden";
                     })
                   );
@@ -288,6 +307,7 @@ const Leaderboard = () => {
                   }}
                   onClick={() => {
                     setShowCard(false);
+                    setInputDisabled(false);
                     document.body.style.overflow = "auto";
                   }}
                 />
@@ -347,9 +367,16 @@ const Leaderboard = () => {
                           size="md"
                         >
                           <SiLeetcode style={{ marginRight: "8px" }} />
-                          {userLeetcodeName
-                            ? userLeetcodeName
-                            : "Username not found"}
+                          {userLeetcodeName ? (
+                            <a
+                              className="text-violet-500 underline"
+                              href={`https://leetcode.com/u/${userLeetcodeName}`}
+                            >
+                              {userLeetcodeName}
+                            </a>
+                          ) : (
+                            "Username not found"
+                          )}
                         </Heading>
 
                         <Text
@@ -360,7 +387,9 @@ const Leaderboard = () => {
                             alignItems: "center",
                           }}
                         >
-                          <b style={{ marginRight: "8px" }}>Global Ranking:</b>{" "}
+                          <b style={{ marginRight: "8px" }}>
+                            🌍 Global Ranking:
+                          </b>{" "}
                           {userGlobalRanking
                             ? userGlobalRanking.toLocaleString()
                             : "N/A"}
@@ -374,7 +403,9 @@ const Leaderboard = () => {
                             alignItems: "center",
                           }}
                         >
-                          <b style={{ marginRight: "8px" }}>Local Ranking:</b>{" "}
+                          <b style={{ marginRight: "8px" }}>
+                            📈 Local Ranking:
+                          </b>{" "}
                           {userLocalRanking
                             ? userLocalRanking.toLocaleString()
                             : "N/A"}
@@ -388,7 +419,7 @@ const Leaderboard = () => {
                             alignItems: "center",
                           }}
                         >
-                          <b style={{ marginRight: "8px" }}>Wins:</b>{" "}
+                          <b style={{ marginRight: "8px" }}>🏆 Wins:</b>{" "}
                           {userWins >= 0 ? userWins.toLocaleString() : "N/A"}
                         </Text>
                       </Stack>
@@ -400,12 +431,7 @@ const Leaderboard = () => {
           </AnimatePresence>
           <Container className="">
             <motion.div initial="hidden" animate="visible">
-              <Table
-                //   striped
-                //   bordered
-                //   hover
-                className="leaderboard-table-container"
-              >
+              <Table className="leaderboard-table-container">
                 <thead>
                   <tr className="table-header">
                     <th>Rank</th>

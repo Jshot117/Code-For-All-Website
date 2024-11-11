@@ -177,6 +177,7 @@
   padding-bottom: min(7rem, 10vw);
 }
 
+/* search bar css */
 .input-container {
   position: relative;
   width: 60%;
