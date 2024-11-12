@@ -1,48 +1,10 @@
 .leaderboard-container {
   position: relative;
-  min-height: 10vh;
+  overflow: hidden;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-}
-
-.podium-container {
-  width: 90vw;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 2rem;
-}
-
-.podium {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px;
-  width: 18%;
-  max-width: 100px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #333;
-  position: relative;
-}
-
-.username-hover {
-  position: absolute;
-  top: -2rem;
-  /* left: 50%; */
-  /* transform: translateX(-50%);  */
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  font-weight: bold;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -64,89 +26,6 @@
   font-weight: bold;
   padding-bottom: 120px;
 }
-
-.podium-second {
-  background-color: #c0c0c0;
-  height: 170px;
-  order: 1;
-}
-
-.podium-first {
-  background-color: #f0c040;
-  height: 220px;
-  order: 2;
-}
-
-.podium-third {
-  background-color: #cd7f32;
-  height: 120px;
-  order: 3;
-}
-
-.rank-number {
-  font-size: 2.5rem;
-  color: white;
-  position: absolute;
-  top: 0px;
-  font-weight: bold;
-  text-shadow: 0 0 5px black, 0 0 5px black;
-}
-
-.points {
-  font-size: 1.15rem;
-  font-weight: bold;
-  margin-top: auto;
-}
-
-.leaderboard-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-}
-
-.leaderboard-table-container {
-  width: 80%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 10px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.8);
-  table-layout: fixed;
-}
-
-.table-header {
-  background-color: #543d6d;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 10px;
-  font-size: 1.5rem;
-  white-space: normal;
-  word-break: break-word;
-}
-
-.table-cell {
-  text-align: center;
-  padding: 8px 5px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  word-break: break-word;
-}
-
-.table-row {
-  height: auto;
-}
-
-/* screw this why cant it be rounded normally */
-.table-header th:first-child {
-  border-top-left-radius: 10px;
-}
-
-.table-header th:last-child {
-  border-top-right-radius: 10px;
-}
-/*  */
 
 @media (max-width: 768px) {
   .leaderboard-table-container {
@@ -175,29 +54,4 @@
   flex: 1;
   overflow-y: auto;
   padding-bottom: min(7rem, 10vw);
-}
-
-/* search bar css */
-.input-container {
-  position: relative;
-  width: 60%;
-  margin: 20px auto;
-}
-
-.search-input {
-  width: 100%;
-  padding: 10px 40px 10px 15px;
-  font-size: 1.25rem;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-}
-
-.search-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  color: #888;
-  cursor: pointer;
 }

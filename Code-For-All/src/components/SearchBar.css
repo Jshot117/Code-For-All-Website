@@ -1,0 +1,24 @@
+/* search bar css */
+.input-container {
+  position: relative;
+  width: 60%;
+  margin: 20px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  font-size: 1.25rem;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}

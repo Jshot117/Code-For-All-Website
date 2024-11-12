@@ -1,17 +1,16 @@
 // to do later at some point eventually (never) split into components to not have 500 line file
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "../HomeComponents/Header";
 import LottieAnimation from "../HomeComponents/LottieAnimation";
 import Social from "../HomeComponents/Social";
 import "./Leaderboard.css";
-import { SiLeetcode, SiDiscord } from "react-icons/si";
-import { FaSearch } from "react-icons/fa";
-// import SearchBar from "./SearchBar";
-
-import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
+import LeaderboardPodium from "./LeaderboardPodium";
+import LeaderboardTable from "./LeaderboardTable";
+import SearchBar from "./SearchBar";
+import UserCard from "./UserCard";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -57,28 +56,10 @@ const Leaderboard = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
   const topThree = leaderboard.slice(0, 3);
   const rest = leaderboard.slice(3);
 
-  const podiumVariants = (delay) => ({
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, delay: delay },
-    },
-  });
-
-  const crownHoverAnimation = {
-    y: [0, -10, 0],
-    transition: {
-      y: {
-        duration: 3,
-        repeat: Infinity,
-        repeatType: "loop",
-      },
-    },
-  };
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } },
@@ -143,11 +124,6 @@ const Leaderboard = () => {
     );
   };
 
-  //   const handleCloseCard = () => {
-  //     setShowCard(false);
-  //     setInputDisabled(false);
-  //   };
-
   return (
     <div className="leaderboard-container">
       <div className="content-container">
@@ -159,133 +135,13 @@ const Leaderboard = () => {
           <h1 className="text-center my-4 title-container">
             Leetcode Leaderboard
           </h1>
-          {/* Podium */}
-          <motion.div
-            className="podium-container"
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Third place */}
-            {topThree[2] && (
-              <motion.div
-                className={`podium podium-third`}
-                variants={podiumVariants(0)}
-              >
-                <span className="rank-number">3</span>
-                <span className="username-hover" style={{ top: "-4rem" }}>
-                  {topThree[2].discord_username}
-                </span>
-                <span className="username-hover">{topThree[2].username}</span>
-                <span className="points">{topThree[2].points} points</span>
-              </motion.div>
-            )}
+          <LeaderboardPodium topThree={topThree} />
 
-            {/* Second place */}
-            {topThree[1] && (
-              <motion.div
-                className={`podium podium-second`}
-                variants={podiumVariants(0.5)}
-              >
-                <span className="rank-number">2</span>
-                <span className="username-hover">{topThree[1].username}</span>
-                <span className="username-hover" style={{ top: "-4rem" }}>
-                  {topThree[1].discord_username}
-                </span>
-                <span className="points">{topThree[1].points} points</span>
-              </motion.div>
-            )}
-
-            {/* First place */}
-            {topThree[0] && (
-              <motion.div
-                className={`podium podium-first`}
-                variants={podiumVariants(1)}
-              >
-                <motion.span
-                  className="crown-icon"
-                  style={{
-                    position: "absolute",
-                    top: "-8rem",
-                    fontSize: "3rem",
-                  }}
-                  animate={crownHoverAnimation}
-                >
-                  👑
-                </motion.span>
-                <span className="rank-number">1</span>
-                <span className="username-hover" style={{ top: "-4rem" }}>
-                  {topThree[0].discord_username}
-                </span>
-                <span className="username-hover">{topThree[0].username}</span>
-                <span className="points">{topThree[0].points} points</span>
-              </motion.div>
-            )}
-          </motion.div>
-
-          {/* Search bar */}
-          {/* <SearchBar
+          <SearchBar
             searchQuery={searchQuery}
             handleSearchChange={handleSearchChange}
             inputDisabled={inputDisabled}
-          /> */}
-
-          <div className="input-container">
-            <input
-              type="text"
-              placeholder="Search for a Discord/Leetcode username..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="search-input"
-              disabled={inputDisabled}
-            />
-            <FaSearch
-              className="search-icon"
-              onClick={() => {
-                if (searchQuery.trim() !== "") {
-                  setTypingTimeout(
-                    setTimeout(async () => {
-                      let response = null;
-                      try {
-                        response = await axios.get(
-                          `https://server.rakibshahid.com/api/discord_lookup`,
-                          {
-                            headers: {
-                              "discord-username": searchQuery,
-                            },
-                            validateStatus: false,
-                          }
-                        );
-                        if (response.status === 404) {
-                          response = await axios.get(
-                            `https://server.rakibshahid.com/api/leetcode_lookup`,
-                            {
-                              headers: {
-                                "leetcode-username": searchQuery,
-                              },
-                              validateStatus: false,
-                            }
-                          );
-                        }
-                        setDiscordName(response.data.discord_username);
-                        setLeetcodeName(response.data.leetcode_username);
-                        setAvatarURL(response.data.avatar);
-                        setGlobalRanking(response.data.ranking);
-                        setLocalRanking(response.data.local_ranking);
-                        setWins(response.data.wins);
-                      } catch (error) {
-                        console.error("Error fetching user data:", error);
-                      }
-                      setShowCard(true);
-                      setInputDisabled(true);
-                      document.body.style.overflow = "hidden";
-                    })
-                  );
-                }
-              }}
-            />
-          </div>
-
-          {/* <LookupCard /> */}
+          />
 
           <AnimatePresence>
             {showCard && (
@@ -327,132 +183,19 @@ const Leaderboard = () => {
                     width: "300px",
                   }}
                 >
-                  <Card>
-                    <CardBody>
-                      <Image
-                        style={{
-                          margin: "auto",
-                        }}
-                        src={
-                          userAvatarURL
-                            ? userAvatarURL
-                            : "https://media1.tenor.com/m/lxJgp-a8MrgAAAAd/laeppa-vika-half-life-alyx.gif"
-                        }
-                        alt={`${userDiscordName}'s avatar`}
-                        borderRadius="lg"
-                      />
-                      <Stack mt="6" spacing="3">
-                        <Heading
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                          size="md"
-                        >
-                          <SiDiscord style={{ marginRight: "8px" }} />
-                          {userDiscordName
-                            ? userDiscordName
-                            : "Username not found"}
-                        </Heading>
-
-                        <Heading
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                          size="md"
-                        >
-                          <SiLeetcode style={{ marginRight: "8px" }} />
-                          {userLeetcodeName ? (
-                            <a
-                              className="text-violet-500 underline"
-                              href={`https://leetcode.com/u/${userLeetcodeName}`}
-                            >
-                              {userLeetcodeName}
-                            </a>
-                          ) : (
-                            "Username not found"
-                          )}
-                        </Heading>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>
-                            🌍 Global Ranking:
-                          </b>{" "}
-                          {userGlobalRanking
-                            ? userGlobalRanking.toLocaleString()
-                            : "N/A"}
-                        </Text>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>
-                            📈 Local Ranking:
-                          </b>{" "}
-                          {userLocalRanking
-                            ? userLocalRanking.toLocaleString()
-                            : "N/A"}
-                        </Text>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>🏆 Wins:</b>{" "}
-                          {userWins >= 0 ? userWins.toLocaleString() : "N/A"}
-                        </Text>
-                      </Stack>
-                    </CardBody>
-                  </Card>
+                  <UserCard
+                    discordUsername={userDiscordName}
+                    leetcodeUsername={userLeetcodeName}
+                    avatarUrl={userAvatarURL}
+                    globalRanking={userGlobalRanking}
+                    localRanking={userLocalRanking}
+                    wins={userWins}
+                  />
                 </motion.div>
               </>
             )}
           </AnimatePresence>
-          <Container className="">
-            <motion.div initial="hidden" animate="visible">
-              <Table className="leaderboard-table-container">
-                <thead>
-                  <tr className="table-header">
-                    <th>Rank</th>
-                    <th>Discord Username</th>
-                    <th>Leetcode Username</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rest.slice(0, 10).map((user, index) => (
-                    <tr key={index} className="table-row">
-                      <td className="table-cell">{index + 4}</td>
-                      <td className="table-cell">{user.discord_username}</td>
-                      <td className="table-cell">{user.username}</td>
-                      <td className="table-cell">{user.points}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </motion.div>
-          </Container>
+          <LeaderboardTable data={rest} />
         </Container>
       </div>
       <div className="social-container">
