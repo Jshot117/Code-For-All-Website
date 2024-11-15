@@ -24,7 +24,6 @@
   font-size: min(3rem, 20vw);
   color: #d1a5fd;
   font-weight: bold;
-  padding-bottom: 120px;
 }
 
 @media (max-width: 768px) {

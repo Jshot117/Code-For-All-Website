@@ -3,7 +3,7 @@ import { Table, Container } from "react-bootstrap";
 import { motion } from "framer-motion";
 import "./LeaderboardTable.css";
 
-const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
+const LeaderboardHistory = ({ data, currentPage, onPageChange }) => {
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } },
@@ -11,11 +11,11 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
 
   const itemsPerPage = 10;
   const startIndex = currentPage * itemsPerPage;
+
   const paginatedData = data.slice(startIndex, startIndex + itemsPerPage);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   return (
-    <Container className="">
+    <Container>
       <motion.div initial="hidden" animate="visible" variants={fadeInVariants}>
         <Table className="leaderboard-table-container">
           <thead>
@@ -23,16 +23,18 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
               <th>Rank</th>
               <th>Discord Username</th>
               <th>Leetcode Username</th>
-              <th>Points</th>
+              <th>Total Wins</th>
+              <th>Total Points</th>
             </tr>
           </thead>
           <tbody>
             {paginatedData.map((user, index) => (
               <tr key={index} className="table-row">
-                <td className="table-cell">{startIndex + index + 4}</td>
+                <td className="table-cell">{startIndex + index + 1}</td>
                 <td className="table-cell">{user.discord_username}</td>
-                <td className="table-cell">{user.username}</td>
-                <td className="table-cell">{user.points}</td>
+                <td className="table-cell">{user.leetcode_username}</td>
+                <td className="table-cell">{user.total_wins}</td>
+                <td className="table-cell">{user.total_points}</td>
               </tr>
             ))}
           </tbody>
@@ -53,9 +55,9 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
               padding: "8px 16px",
               borderRadius: "20px",
               fontWeight: "bold",
-              marginLeft: "auto",
               opacity: currentPage === 0 ? 0.6 : 1,
               cursor: currentPage === 0 ? "not-allowed" : "pointer",
+              marginLeft: "auto",
             }}
           >
             Previous
@@ -93,4 +95,4 @@ const LeaderboardTable = ({ data, currentPage, onPageChange }) => {
   );
 };
 
-export default LeaderboardTable;
+export default LeaderboardHistory;
