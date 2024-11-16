@@ -31,7 +31,6 @@
   height: auto;
 }
 
-/* screw this why cant it be rounded normally */
 .table-header th:first-child {
   border-top-left-radius: 10px;
 }
@@ -39,4 +38,3 @@
 .table-header th:last-child {
   border-top-right-radius: 10px;
 }
-/*  */
