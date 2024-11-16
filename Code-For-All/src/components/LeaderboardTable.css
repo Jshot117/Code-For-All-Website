@@ -1,0 +1,40 @@
+.leaderboard-table-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  table-layout: fixed;
+}
+
+.table-header {
+  background-color: #543d6d;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1.5rem;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.table-cell {
+  text-align: center;
+  padding: 8px 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.table-row {
+  height: auto;
+}
+
+.table-header th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.table-header th:last-child {
+  border-top-right-radius: 10px;
+}

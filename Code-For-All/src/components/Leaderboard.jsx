@@ -1,27 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { AnimatePresence, motion } from "framer-motion";
 import Header from "../HomeComponents/Header";
 import LottieAnimation from "../HomeComponents/LottieAnimation";
 import Social from "../HomeComponents/Social";
 import "./Leaderboard.css";
-import { SiLeetcode, SiDiscord } from "react-icons/si";
-import { FaSearch } from "react-icons/fa";
-
-import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
+import LeaderboardPodium from "./LeaderboardPodium";
+import LeaderboardTable from "./LeaderboardTable";
+import LeaderboardHistory from "./LeaderboardHistory";
+import SearchBar from "./SearchBar";
+import UserCard from "./UserCard";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [typingTimeout, setTypingTimeout] = useState(null);
   const [showCard, setShowCard] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const [userDiscordName, setDiscordName] = useState(null);
   const [userLeetcodeName, setLeetcodeName] = useState(null);
   const [userAvatarURL, setAvatarURL] = useState("");
   const [userGlobalRanking, setGlobalRanking] = useState("");
   const [userLocalRanking, setLocalRanking] = useState("");
   const [userWins, setWins] = useState(0);
+  const [showHistory, setShowHistory] = useState(false);
+  const [leaderboardHistory, setLeaderboardHistory] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [historyPage, setHistoryPage] = useState(0);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -34,35 +40,63 @@ const Leaderboard = () => {
         console.error("Error fetching leaderboard data:", error);
       }
     };
-
     fetchLeaderboard();
+
+    const fetchData = async () => {
+      try {
+        const [leaderboardResponse, historyResponse] = await Promise.all([
+          axios.get("https://server.rakibshahid.com/leaderboard"),
+          axios.get(
+            "https://server.rakibshahid.com/leaderboard/leaderboard_history"
+          ),
+        ]);
+
+        setLeaderboard(leaderboardResponse.data);
+        setLeaderboardHistory(historyResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+
+    const handleKeyDown = (event) => {
+      if (
+        event.key === "Escape" ||
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+        setShowCard(false);
+        setInputDisabled(false);
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  const toggleView = () => {
+    setShowHistory(!showHistory);
+  };
+
   const topThree = leaderboard.slice(0, 3);
   const rest = leaderboard.slice(3);
 
-  const podiumVariants = (delay) => ({
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, delay: delay },
-    },
-  });
-
-  const crownHoverAnimation = {
-    y: [0, -10, 0],
-    transition: {
-      y: {
-        duration: 3,
-        repeat: Infinity,
-        repeatType: "loop",
-      },
-    },
-  };
   const fadeInVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } },
     exit: { opacity: 0, transition: { duration: 0.3 } },
+  };
+
+  const handlePageChange = (newPage) => {
+    if (showHistory) {
+      setHistoryPage(newPage);
+    } else {
+      setCurrentPage(newPage);
+    }
   };
 
   const handleSearchChange = (e) => {
@@ -112,17 +146,15 @@ const Leaderboard = () => {
           }
 
           setShowCard(true);
+          setInputDisabled(true);
           document.body.style.overflow = "hidden";
         } else {
           setShowCard(false);
+          setInputDisabled(false);
           document.body.style.overflow = "auto";
         }
-      }, 1000)
+      }, 2000)
     );
-  };
-
-  const handleCloseCard = () => {
-    setShowCard(false);
   };
 
   return (
@@ -134,148 +166,43 @@ const Leaderboard = () => {
         <Header />
         <Container style={{ margin: "0 auto" }}>
           <h1
-            className="text-center my-4"
+            className="text-center my-4 title-container"
             style={{
-              fontSize: "4rem",
-              color: "#D1A5FD",
-              fontWeight: "bold",
-              paddingBottom: "120px",
+              paddingBottom: showHistory ? "0px" : "120px",
             }}
           >
-            Leetcode Leaderboard
+            {showHistory ? "All-Time Leaderboard" : "Leetcode Leaderboard"}
           </h1>
-          {/* Podium */}
-          <motion.div
-            className="podium-container"
-            initial="hidden"
-            animate="visible"
+          {!showHistory && <LeaderboardPodium topThree={topThree} />}
+
+          <div
+            className="d-flex justify-content-center mb-4 mt-4 "
+            style={{ display: "flex" }}
           >
-            {/* Third place */}
-            {topThree[2] && (
-              <motion.div
-                className={`podium podium-third`}
-                variants={podiumVariants(0)}
-              >
-                <span className="rank-number">3</span>
-                <span className="username-hover" style={{ top: "-80px" }}>
-                  {topThree[2].discord_username}
-                </span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[2].username}
-                </span>
-                <span className="points">{topThree[2].points} points</span>
-              </motion.div>
-            )}
-
-            {/* Second place */}
-            {topThree[1] && (
-              <motion.div
-                className={`podium podium-second`}
-                variants={podiumVariants(0.5)}
-              >
-                <span className="rank-number">2</span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[1].username}
-                </span>
-                <span className="username-hover" style={{ top: "-80px" }}>
-                  {topThree[1].discord_username}
-                </span>
-                <span className="points">{topThree[1].points} points</span>
-              </motion.div>
-            )}
-
-            {/* First place */}
-            {topThree[0] && (
-              <motion.div
-                className={`podium podium-first`}
-                variants={podiumVariants(1)}
-              >
-                <motion.span
-                  className="crown-icon"
-                  style={{
-                    position: "absolute",
-                    top: "-135px",
-                    fontSize: "3rem",
-                  }}
-                  animate={crownHoverAnimation}
-                >
-                  👑
-                </motion.span>
-                <span className="rank-number">1</span>
-                <span className="username-hover" style={{ top: "-80px" }}>
-                  {topThree[0].discord_username}
-                </span>
-                <span
-                  className="username-hover"
-                  style={{ fontSize: "1.25rem" }}
-                >
-                  {topThree[0].username}
-                </span>
-                <span className="points">{topThree[0].points} points</span>
-              </motion.div>
-            )}
-          </motion.div>
-
-          {/* Search bar */}
-          <div className="input-container">
-            <input
-              type="text"
-              placeholder="Search for a Discord/Leetcode username..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="search-input"
-            />
-            <FaSearch
-              className="search-icon"
-              onClick={() => {
-                if (searchQuery.trim() !== "") {
-                  setTypingTimeout(
-                    setTimeout(async () => {
-                      let response = null;
-                      try {
-                        response = await axios.get(
-                          `https://server.rakibshahid.com/api/discord_lookup`,
-                          {
-                            headers: {
-                              "discord-username": searchQuery,
-                            },
-                            validateStatus: false,
-                          }
-                        );
-                        if (response.status === 404) {
-                          response = await axios.get(
-                            `https://server.rakibshahid.com/api/leetcode_lookup`,
-                            {
-                              headers: {
-                                "leetcode-username": searchQuery,
-                              },
-                              validateStatus: false,
-                            }
-                          );
-                        }
-                        setDiscordName(response.data.discord_username);
-                        setLeetcodeName(response.data.leetcode_username);
-                        setAvatarURL(response.data.avatar);
-                        setGlobalRanking(response.data.ranking);
-                        setLocalRanking(response.data.local_ranking);
-                        setWins(response.data.wins);
-                      } catch (error) {
-                        console.error("Error fetching user data:", error);
-                      }
-                      setShowCard(true);
-                      document.body.style.overflow = "hidden";
-                    })
-                  );
-                }
+            <button
+              className="btn btn-primary text-white"
+              style={{
+                backgroundColor: "#c938ff",
+                border: "none",
+                padding: "10px 20px",
+                borderRadius: "20px",
+                fontWeight: "bold",
+                transition: "background-color 0.3s ease",
+                margin: "auto",
               }}
-            />
+              onClick={toggleView}
+            >
+              {showHistory ? "Show Current Rankings" : "Show All-Time Stats"}
+            </button>
           </div>
+
+          {!showHistory && (
+            <SearchBar
+              searchQuery={searchQuery}
+              handleSearchChange={handleSearchChange}
+              inputDisabled={inputDisabled}
+            />
+          )}
 
           <AnimatePresence>
             {showCard && (
@@ -297,6 +224,7 @@ const Leaderboard = () => {
                   }}
                   onClick={() => {
                     setShowCard(false);
+                    setInputDisabled(false);
                     document.body.style.overflow = "auto";
                   }}
                 />
@@ -316,125 +244,32 @@ const Leaderboard = () => {
                     width: "300px",
                   }}
                 >
-                  <Card>
-                    <CardBody>
-                      <Image
-                        style={{
-                          margin: "auto",
-                        }}
-                        src={
-                          userAvatarURL
-                            ? userAvatarURL
-                            : "https://media1.tenor.com/m/lxJgp-a8MrgAAAAd/laeppa-vika-half-life-alyx.gif"
-                        }
-                        alt={`${userDiscordName}'s avatar`}
-                        borderRadius="lg"
-                      />
-                      <Stack mt="6" spacing="3">
-                        <Heading
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                          size="md"
-                        >
-                          <SiDiscord style={{ marginRight: "8px" }} />
-                          {userDiscordName
-                            ? userDiscordName
-                            : "Username not found"}
-                        </Heading>
-
-                        <Heading
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                          size="md"
-                        >
-                          <SiLeetcode style={{ marginRight: "8px" }} />
-                          {userLeetcodeName
-                            ? userLeetcodeName
-                            : "Username not found"}
-                        </Heading>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>Global Ranking:</b>{" "}
-                          {userGlobalRanking
-                            ? userGlobalRanking.toLocaleString()
-                            : "N/A"}
-                        </Text>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>Local Ranking:</b>{" "}
-                          {userLocalRanking
-                            ? userLocalRanking.toLocaleString()
-                            : "N/A"}
-                        </Text>
-
-                        <Text
-                          style={{
-                            margin: "auto",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                          }}
-                        >
-                          <b style={{ marginRight: "8px" }}>Wins:</b>{" "}
-                          {userWins >= 0 ? userWins.toLocaleString() : "N/A"}
-                        </Text>
-                      </Stack>
-                    </CardBody>
-                  </Card>
+                  <UserCard
+                    discordUsername={userDiscordName}
+                    leetcodeUsername={userLeetcodeName}
+                    avatarUrl={userAvatarURL}
+                    globalRanking={userGlobalRanking}
+                    localRanking={userLocalRanking}
+                    wins={userWins}
+                  />
                 </motion.div>
               </>
             )}
           </AnimatePresence>
 
-          <motion.div initial="hidden" animate="visible">
-            <Table
-              striped
-              bordered
-              hover
-              className="leaderboard-table-container"
-            >
-              <thead>
-                <tr className="table-header">
-                  <th>Rank</th>
-                  <th>Discord Username</th>
-                  <th>Leetcode Username</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rest.slice(0, 10).map((user, index) => (
-                  <tr key={index} className="table-row">
-                    <td className="table-cell">{index + 4}</td>
-                    <td className="table-cell">{user.discord_username}</td>
-                    <td className="table-cell">{user.username}</td>
-                    <td className="table-cell">{user.points}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </motion.div>
+          {showHistory ? (
+            <LeaderboardHistory
+              data={leaderboardHistory}
+              currentPage={historyPage}
+              onPageChange={handlePageChange}
+            />
+          ) : (
+            <LeaderboardTable
+              data={rest}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </Container>
       </div>
       <div className="social-container">

@@ -1,0 +1,68 @@
+.podium-second {
+  background-color: #c0c0c0;
+  height: 170px;
+  order: 1;
+}
+
+.podium-first {
+  background-color: #f0c040;
+  height: 220px;
+  order: 2;
+}
+
+.podium-third {
+  background-color: #cd7f32;
+  height: 120px;
+  order: 3;
+}
+
+.rank-number {
+  font-size: 2.5rem;
+  color: white;
+  position: absolute;
+  top: 0px;
+  font-weight: bold;
+  text-shadow: 0 0 5px black, 0 0 5px black;
+}
+.podium-container {
+  width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.podium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 18%;
+  max-width: 100px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  position: relative;
+}
+
+.username-hover {
+  position: absolute;
+  top: -2rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 10px #1e1251, 0 0 10px #1e1251;
+}
+
+.points {
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-top: auto;
+}
